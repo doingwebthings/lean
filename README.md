@@ -8,3 +8,7 @@ What I want:
 - use wordpress as intended
 - take all theme-related features from "functionality plugin" and put it into the according include-files loaded by functions.php
 - write shorter sentences
+- use best practices from h5bp, bootstrap and friends as much as possible
+ 
+
+

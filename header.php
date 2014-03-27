@@ -15,13 +15,29 @@
 
 <body <?php body_class(); ?>>
 
-    <!--[if lt IE 7]>
-    <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
-        your browser</a> to improve your experience.</p>
-    <![endif]-->
+<header>
 
-    <header>
+    <div class="container">
+        <nav class="language-switcher">
+            <ul class="nav navbar-nav">
+                <li><a>DE</a></li>
+                <li><a>EN</a></li>
+                <li><a>FR</a></li>
+                <li><a>ES</a></li>
+            </ul>
+        </nav>
+        <nav class="secondary-menu navbar" role="navigation">
+            <?php wp_nav_menu(array('theme_location' => 'secondary', 'container' => 'false', 'menu_class' => 'nav navbar-nav')); ?>
+        </nav>
+    </div>
 
-        <?php #wp_nav_menu(array('theme_location' => 'primary', 'container' => 'false')); ?>
 
-    </header>
+
+    <div class="container">
+        <nav class="primary-menu" role="navigation">
+            <?php wp_nav_menu(array('theme_location' => 'primary', 'container' => 'false', 'menu_class' => 'nav navbar-nav')); ?>
+        </nav>
+    </div>
+
+
+</header>

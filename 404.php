@@ -1,4 +1,4 @@
-<?php get_header(); ?>
+<?php include('partials/header.php'); ?>
     <section class="error-404 not-found">
         <header class="page-header">
             <h1 class="page-title"><?php _e('Oops! That page can&rsquo;t be found.', 'lean'); ?></h1>
@@ -10,4 +10,4 @@
             <?php the_widget('WP_Widget_Recent_Posts'); ?>
         </div>
     </section>
-<?php get_footer(); ?>
+<?php include('partials/footer.php'); ?>

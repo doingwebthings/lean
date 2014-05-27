@@ -1,4 +1,4 @@
-<?php get_header(); ?>
+<?php include('partials/header.php'); ?>
 
 <?php if (have_posts()) : ?>
 
@@ -67,5 +67,5 @@
 <?php endif; ?>
 
 
-<?php get_sidebar(); ?>
-<?php get_footer(); ?>
+<?php include('partials/widgets.php'); ?>
+<?php include('partials/footer.php'); ?>

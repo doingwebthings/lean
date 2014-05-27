@@ -1,4 +1,4 @@
-<?php get_header(); ?>
+<?php include('partials/header.php'); ?>
 
 <main role="main">
     <?php while (have_posts()) { ?>
@@ -10,5 +10,5 @@
     <?php } ?>
 </main>
 
-<?php get_sidebar(); ?>
-<?php get_footer(); ?>
+<?php include('partials/widgets.php'); ?>
+<?php include('partials/footer.php'); ?>

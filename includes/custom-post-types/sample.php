@@ -1,11 +1,10 @@
 <?php
 // Register Custom Post Type
-function custom_post_type_sample()
-{
+function custom_post_type_sample() {
 
     $labels = array(
-        'name' => _x('sample', 'Post Type General Name', 'text_domain'),
-        'singular_name' => _x('sample', 'Post Type Singular Name', 'text_domain'),
+        'name' => _x('News', 'News', 'text_domain'),
+        'singular_name' => _x('News-Item', 'Post Type Singular Name', 'text_domain'),
         'menu_name' => __('sample', 'text_domain'),
         'parent_item_colon' => __('Parent Item:', 'text_domain'),
         'all_items' => __('Alle sample', 'text_domain'),
@@ -37,7 +36,6 @@ function custom_post_type_sample()
         'capability_type' => 'page',
     );
     register_post_type('sample', $args);
-
 }
 
 // Hook into the 'init' action

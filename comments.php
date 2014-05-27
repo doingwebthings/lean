@@ -1,13 +1,4 @@
 <?php
-/**
- * The template for displaying Comments.
- *
- * The area of the page that contains both current comments
- * and the comment form.
- *
- * @package lean
- */
-
 /*
  * If the current post is protected by a password and
  * the visitor has not yet entered the password we will
@@ -18,9 +9,7 @@ if (post_password_required()) {
 }
 ?>
 
-<div id="comments" class="comments-area">
-
-    <?php // You can start editing here -- including this comment! ?>
+<div class="comments-area">
 
     <?php if (have_comments()) : ?>
         <h2 class="comments-title">

@@ -25,13 +25,13 @@ All these files are loaded by functions.php
 
 ####theme-setup.php
 
-- registers menus (primary and secondary) and widgets
-- makes BFI_Thumbs available for usage in template files
-- load asset files: js/scripts.min.js (all js) at the bottom, js/modernizr.min.js in head and css/styles.css in head
-- remove comments from wp_header() and wp_footer()
-- various filters (title, excerpt, attachement-links, ...)
-- remove some wordpress stuff (feed-links, wp-generator, ...) not activated by default
-- bootstrap navbar with https://github.com/twittem/wp-bootstrap-navwalker
+- registers **menus** (primary and secondary) and widgets
+- **image resizing**: BFI_Thumbs available for usage in template files
+- load **asset files**: js/scripts.min.js (all js) at the bottom, js/modernizr.min.js in head and css/styles.css in head
+- **remove comments** from wp_header() and wp_footer()
+- **various filters** (title, excerpt, attachement-links, ...)
+- **remove some wordpress stuff** (feed-links, wp-generator, ...) not activated by default
+- **bootstrap navbar** with https://github.com/twittem/wp-bootstrap-navwalker
 
 ####admin-setup.php
 

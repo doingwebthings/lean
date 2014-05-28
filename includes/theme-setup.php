@@ -11,7 +11,7 @@ include('libs/BFI_Thumb.php'); //https://github.com/bfintal/bfi_thumb
 @define(BFITHUMB_UPLOAD_DIR, 'imagecache');
 
 
-
+include('libs/wp_bootstrap_navwalker.php');
 
 
 /**

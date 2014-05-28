@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,">
     <title><?php wp_title('|', true, 'right'); ?></title>
 
+    <link rel="shortcut icon" type="image/x-icon" href="<?php echo asset_url(); ?>img/favicon.ico">
+
     <script type="text/javascript">
         var baseurl = '<?php echo base_url(); ?>';
     </script>

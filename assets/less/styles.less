@@ -1,8 +1,9 @@
-//codekit: export to css/styles.min.css
+//export to css/styles.css
+//REMOVE ANYTHING NOT NEEDED
 // Core variables and mixins
 @import "../bower_components/bootstrap/less/variables";
 //override bs-vars
-@import "my-vars";
+@import "bootstrap-override-vars";
 @import "../bower_components/bootstrap/less/mixins";
 // Reset
 @import "../bower_components/bootstrap/less/normalize";
@@ -55,3 +56,49 @@
 @dark-gray-blue: #5a6771;
 @light-gray: #f5f5f5;
 
+//remove padding from element (.container-fluid)
+.no-padding, {
+  padding: 0;
+}
+
+body {
+  padding-top: 50px;
+}
+
+//centered row
+.container {
+  background-color: #f2dede;
+}
+
+//full row
+.container-fluid {
+  background-color: #f2deaf;
+}
+
+//main area for content
+.main {
+  .make-md-column(8);
+}
+
+//"default-container" for wordpress widgets
+.widget-area {
+  .make-md-column(4);
+}
+
+//makes a gutter like in the good old times... use a bootstrap var instead the 30px
+.row-gutter {
+  margin-left: -30px;
+  margin-right: -30px;
+}
+
+.gutter-test {
+  background-color: #ddd;
+  margin-top: 15px;
+  padding: 1em;
+}
+
+
+.footer-section{
+  background-color: #aaa;
+  padding: 1em;
+}

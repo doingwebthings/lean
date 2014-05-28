@@ -1073,7 +1073,7 @@
 		},
 	"\/bower_components\/jquery\/dist\/jquery.js": {
 		"fileType": 64,
-		"ignore": 0,
+		"ignore": 1,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/bower_components\/jquery\/dist\/jquery.js",
 		"outputAbbreviatedPath": "\/bower_components\/jquery\/dist\/min\/jquery.min.js",
@@ -2004,17 +2004,6 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/js\/min\/scripts.min.js": {
-		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/js\/min\/scripts.min.js",
-		"outputAbbreviatedPath": "\/js\/min\/min\/scripts.min.min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
-		"syntaxCheckerStyle": 1
-		},
 	"\/js\/modernizr.min.js": {
 		"fileType": 64,
 		"ignore": 0,
@@ -2048,7 +2037,7 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
-	"\/less\/fonts.less": {
+	"\/less\/bootstrap-override-vars.less": {
 		"allowInsecureImports": 0,
 		"createSourceMap": 0,
 		"disableJavascript": 0,
@@ -2056,8 +2045,8 @@
 		"ieCompatibility": 1,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/less\/fonts.less",
-		"outputAbbreviatedPath": "\/css\/fonts.css",
+		"inputAbbreviatedPath": "\/less\/bootstrap-override-vars.less",
+		"outputAbbreviatedPath": "\/css\/bootstrap-override-vars.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 2,
@@ -2068,7 +2057,7 @@
 		"strictMath": 0,
 		"strictUnits": 0
 		},
-	"\/less\/my-vars.less": {
+	"\/less\/fonts.less": {
 		"allowInsecureImports": 0,
 		"createSourceMap": 0,
 		"disableJavascript": 0,
@@ -2076,8 +2065,8 @@
 		"ieCompatibility": 1,
 		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/less\/my-vars.less",
-		"outputAbbreviatedPath": "\/css\/my-vars.css",
+		"inputAbbreviatedPath": "\/less\/fonts.less",
+		"outputAbbreviatedPath": "\/css\/fonts.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 2,

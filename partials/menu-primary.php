@@ -1,4 +1,4 @@
-<div class="container-fluid" style="background-color: #ddd">
+<div class="container-fluid">
     <header>
 
         <nav class="navbar navbar-default navbar-fixed-top" role="navigation">

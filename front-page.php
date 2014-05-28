@@ -11,5 +11,9 @@
     <?php endif; ?>
 </div>
 
+<div class="container-fluid">
+    Fluid Container
+</div>
+
 <?php include('partials/widgets.php'); ?>
 <?php include('partials/footer.php'); ?>

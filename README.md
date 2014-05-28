@@ -17,3 +17,19 @@ What it does:
 - minimal markup for a lean start
 
 
+##Defaults
+
+###/inludes/theme-setup.php
+
+- registers menus (primary and secondary) and widgets
+- makes BFI_Thumbs available for usage in template files
+- load asset files: js/scripts.min.js (all js) at the bottom, js/modernizr.min.js in head and css/styles.css in head
+- remove comments from wp_header() and wp_footer()
+- various filters (title, excerpt, attachement-links, ...)
+- remove some wordpress stuff (feed-links, wp-generator, ...) not activated by default
+
+###/inludes/admin-setup.php
+
+- show template in admin-bar
+- beef up admin (dividers, smaller text)
+- add Role Editor-in-Chief (author + permissions for Appearance)

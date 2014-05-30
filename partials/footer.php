@@ -1,5 +1,5 @@
 <div class="container-fluid footer-section">
-    footer-section
+    <?php get_template_part('partials/widgets-secondary'); ?>
     <div class="container">
         <footer>
             FOOTER

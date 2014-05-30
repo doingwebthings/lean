@@ -1,1 +1,0 @@
-<?php dynamic_sidebar('Widget-Box 1'); ?>

@@ -61,3 +61,6 @@ A file for helper functions used in template files.
 - **bootstrap navbar** with https://github.com/twittem/wp-bootstrap-navwalker
 - **image resizing**: BFI_Thumbs available for usage in template files
 
+##To-Do
+
+- use more semantic markup (and CSS-classes) suitable for blogs AND portfolio-sites

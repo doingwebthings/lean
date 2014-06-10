@@ -214,6 +214,15 @@ remove_action('wp_head', 'wlwmanifest_link'); // Display the link to the Windows
 remove_action('wp_head', 'wp_generator'); // Display the XHTML generator that is generated on the wp_head hook, WP version
 
 
+
+function example_add_rewrite_rules() {
+
+    add_rewrite_rule('ajax', 'wp-content/themes/lean/ajax.php', 'top');
+    flush_rewrite_rules();
+}
+
+add_action('init', 'example_add_rewrite_rules');
+
 //PROJECT-SPECIFIC CODE//////////////////////////////////////////////////////////////////////////////////////////////////////
 
 

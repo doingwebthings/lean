@@ -215,13 +215,16 @@ remove_action('wp_head', 'wp_generator'); // Display the XHTML generator that is
 
 
 
-function example_add_rewrite_rules() {
 
-    add_rewrite_rule('ajax', 'wp-content/themes/lean/ajax.php', 'top');
-    flush_rewrite_rules();
-}
 
-add_action('init', 'example_add_rewrite_rules');
+/**
+ * add fast ajax handling
+ */
+add_action('init', function () {
+
+    add_rewrite_rule('ajax', 'wp-content/themes/lean/xhr.php', 'top');
+    //    flush_rewrite_rules();
+});
 
 //PROJECT-SPECIFIC CODE//////////////////////////////////////////////////////////////////////////////////////////////////////
 

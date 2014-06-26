@@ -33,7 +33,7 @@ module.exports = function(grunt){
                     compress: false,
                     // LESS source map
                     // To enable, set sourceMap to true and update sourceMapRootpath based on your install
-                    sourceMap: false,
+                    sourceMap: true,
                     sourceMapFilename: 'assets/css/main.min.css.map'
 //                    sourceMapRootpath: '/app/themes/lean/'
                 }

@@ -112,17 +112,25 @@ module.exports = function(grunt){
                     'assets/css/styles.css',
                     'assets/js/scripts.min.js'
                 ]
+            },
+            autoprefixer: {
+                options: {
+                    browsers: ['last 2 version', 'ie 8', 'ie 9']
+                }
             }
         }
     );
 
 
 
+    //consider newer-task, like: newer:less ...
+
     // Register tasks
     grunt.registerTask('default', [
         'clean',
-        'newer:less',
-        'newer:uglify',
+        'less',
+        'autoprefixer',
+        'uglify',
         'imagemin',
         'notify'
     ]);

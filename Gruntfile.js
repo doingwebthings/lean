@@ -1,0 +1,121 @@
+'use strict';
+module.exports = function(grunt){
+    grunt.initConfig({
+        //image optimization
+        imagemin: {
+            options: {
+                cache: false
+            },
+            dist: {
+                options: {
+                    optimizationLevel: 5,
+                    progressive: true
+                },
+                files: [
+                    {
+                        expand: true,
+                        cwd: 'assets/img/',
+                        src: ['**/*.{PNG,JPG,JPEG,GIF,png,jpg,jpeg,gif}'],
+                        dest: 'assets/img/'
+                    }
+                ]
+            }
+        },
+        //LESS
+        less: {
+            dist: {
+                files: {
+                    'assets/css/styles.css': [
+                        'assets/less/styles.less'
+                    ]
+                },
+                options: {
+                    compress: false,
+                    // LESS source map
+                    // To enable, set sourceMap to true and update sourceMapRootpath based on your install
+                    sourceMap: false,
+                    sourceMapFilename: 'assets/css/main.min.css.map'
+//                    sourceMapRootpath: '/app/themes/lean/'
+                }
+            }
+        },
+        //uglify and concat js files
+        uglify: {
+            dist: {
+                files: {
+                    'assets/js/scripts.min.js': [
+//                        'assets/bower_components/bootstrap/js/transition.js',
+//                        'assets/bower_components/bootstrap/js/alert.js',
+//                        'assets/bower_components/bootstrap/js/button.js',
+//                        'assets/bower_components/bootstrap/js/carousel.js',
+//                        'assets/bower_components/bootstrap/js/collapse.js',
+//                        'assets/bower_components/bootstrap/js/dropdown.js',
+//                        'assets/bower_components/bootstrap/js/modal.js',
+//                        'assets/bower_components/bootstrap/js/tooltip.js',
+//                        'assets/bower_components/bootstrap/js/popover.js',
+//                        'assets/bower_components/bootstrap/js/scrollspy.js',
+//                        'assets/bower_components/bootstrap/js/tab.js',
+//                        'assets/bower_components/bootstrap/js/affix.js',
+                        'assets/js/scripts.js'
+                    ]
+                },
+                options: {
+                    sourceMap: 'assets/js/scripts.min.js.map',
+                    compress: {
+                        drop_console: true
+                    }
+                }
+            }
+        },
+        watch: {
+            less: {
+                files: [
+                    'assets/less/*.less'
+                ],
+                tasks: ['less']
+            },
+            js: {
+                files: [
+                    'assets/js/scripts.js'
+                ],
+                tasks: [ 'uglify']
+            },
+            livereload: {
+                // Browser live reloading
+                // https://github.com/gruntjs/grunt-contrib-watch#live-reloading
+                options: {
+                    livereload: true
+                },
+                files: [
+                    'assets/css/styles.css',
+                    'assets/js/scripts.js'
+                ]
+            }
+        },
+        clean: {
+            dist: [
+                'assets/css/styles.css',
+                'assets/js/scripts.min.js'
+            ]
+        }
+    });
+
+    // Load tasks
+    grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-less');
+    grunt.loadNpmTasks('grunt-contrib-imagemin');
+
+    // Register tasks
+    grunt.registerTask('default', [
+        'clean',
+        'less',
+        'uglify',
+        'imagemin'
+    ]);
+    grunt.registerTask('dev', [
+        'watch'
+    ]);
+
+};

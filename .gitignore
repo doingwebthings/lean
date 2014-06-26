@@ -1,6 +1,4 @@
-.idea/*
-.codekit-cache/*
-assets/bower_components/*
-assets/css/styles.min.css
-assets/js/scripts.min.css
-assets/js/modernizr.min.css
+.idea/**
+node_modules/**
+assets/bower_components/**
+assets/js/scripts.min.js.map

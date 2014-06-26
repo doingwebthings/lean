@@ -123,7 +123,7 @@ module.exports = function(grunt){
 
 
 
-    //consider newer-task, like: newer:less ...
+    //unused but installed: newer, spritesmith, svg-sprite
 
     // Register tasks
     grunt.registerTask('default', [

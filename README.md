@@ -15,7 +15,6 @@ What it does:
 
 ##To-Do
 
-- Wordpress: Improve default emails (change from, html, ...)
 - Grunt: create image-sprites (and svg-sprites)
 - move to jQuery 2 sometime
 

@@ -1,7 +1,6 @@
 #Lean
 
 Lean is a small wordpress-project-theme.
-It´s intended for usage with codekit (dependancies and minification/concatenation). Setting up a gruntfile shouldn´t be too hard though.
 
 What it does:
 
@@ -10,12 +9,15 @@ What it does:
 - **favicon** included yay
 - minimal markup for a lean start
 - take all theme-related features from "functionality plugin" and put it into the according include-files loaded by functions.php. This might be considered a bad practice but it does a good job for me.
-- load minified assets (install via bower, process via codekit/grunt)
-- uses **jQuery 2** and **Bootstrap 3** (downgrade jQuery to 1.x for older browsers, shims for IE8 already included)
+- load minified assets
+- uses **jQuery 1.11** and **Bootstrap 3** (shims for IE8 already included)
+- Grunt handles image-optimization, compiles the less files and uglifies javascript
 
 ##To-Do
 
-- Improve default emails (change from, html, ...)
+- Wordpress: Improve default emails (change from, html, ...)
+- Grunt: create image-sprites (and svg-sprites)
+- move to jQuery 2 sometime
 
 
 ##Defaults

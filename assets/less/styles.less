@@ -1,10 +1,16 @@
-//export to css/styles.css
+//This file is processed by grunt to: assets/css/styles.css
 //REMOVE ANYTHING NOT NEEDED
+//
+//bootstrap
 // Core variables and mixins
 @import "../bower_components/bootstrap/less/variables";
+//
 //override bs-vars
+//all bootstrap vars = "bootstrap-theme"
 @import "bootstrap-theme";
+//override bootstrap vars (still needed?)
 @import "bootstrap-override-vars";
+//bootstrap Mixins
 @import "../bower_components/bootstrap/less/mixins";
 // Reset
 @import "../bower_components/bootstrap/less/normalize";
@@ -48,17 +54,32 @@
 @import "../bower_components/bootstrap/less/utilities";
 @import "../bower_components/bootstrap/less/responsive-utilities";
 @import '../bower_components/bootstrap/less/bootstrap';
+//mixins
+@import "../bower_components/lesshat/build/lesshat";
+//
 //project-specific styles
 @import "sprites";
 @import "fonts";
+//
+//small screens
+@import "screen-xs";
+@import "screen-sm";
+@import "screen-md";
+@import "screen-lg";
 
+//
+//
+//
+//
+//
+//
 //colors
 @yellow: #ffed00;
 @dark-gray-blue: #5a6771;
 @light-gray: #f5f5f5;
 
 body {
-color: green;
+  color: green;
 }
 
 //HELPER CLASSES ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

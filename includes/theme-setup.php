@@ -18,7 +18,7 @@ include('libs/wp_bootstrap_navwalker.php');
  * adding menus
  */
 register_nav_menus(array(
-    'primary' => __('Primary Menu', 'dwt'),
+    'primary'   => __('Primary Menu', 'dwt'),
     'secondary' => __('Secondary Menu', 'dwt'),
 ));
 
@@ -29,7 +29,8 @@ register_nav_menus(array(
 /**
  * dequeue wp´s jquery and load minified scripts
  */
-function enqueue_minified_scripts() {
+function enqueue_minified_scripts()
+{
     //goodbye jquery
     wp_deregister_script('jquery');
 
@@ -38,11 +39,12 @@ function enqueue_minified_scripts() {
     wp_enqueue_script('jquery');
 
     //modernizr goes into the head
-    wp_register_script('modernizr', asset_url() . 'js/modernizr.min.js', array(), null, false);
+    wp_register_script('modernizr', asset_url() . 'js/modernizr.js', array(), null, false);
     wp_enqueue_script('modernizr');
 }
 
-if (!is_admin()) {
+if (!is_admin())
+{
     add_action('wp_enqueue_scripts', 'enqueue_minified_scripts');
 }
 
@@ -53,7 +55,8 @@ if (!is_admin()) {
 /**
  * enqueue all styles into a single file
  */
-function enqueue_minified_styles() {
+function enqueue_minified_styles()
+{
     wp_register_style('styles', asset_url() . 'css/styles.css', array(), null, 'all');
     wp_enqueue_style('styles');
 }
@@ -69,7 +72,8 @@ add_action('wp_enqueue_scripts', 'enqueue_minified_styles');
  * @param $src
  * @return mixed
  */
-function cleanUpStyleTag($src) {
+function cleanUpStyleTag($src)
+{
     return str_replace("media=''", '', $src);
 }
 
@@ -85,7 +89,8 @@ add_filter('style_loader_tag', 'cleanUpStyleTag');
  * @param $content
  * @return string
  */
-function attachment_image_link_remove_filter($content) {
+function attachment_image_link_remove_filter($content)
+{
     return $content = preg_replace(array('{<a(.*?)(wp-att|wp-content/uploads)[^>]*><img}', '{ wp-image-[0-9]*" /></a>}'), array('<img', '" />'), $content);
 }
 
@@ -104,10 +109,12 @@ add_filter('the_content', 'attachment_image_link_remove_filter');
  * @uses    is_home()
  * @uses    is_front_page()
  */
-function filter_wp_title($title) {
+function filter_wp_title($title)
+{
     global $page, $paged;
 
-    if (is_feed()) {
+    if (is_feed())
+    {
         return $title;
     }
 
@@ -126,7 +133,8 @@ add_filter('wp_title', 'filter_wp_title');
 
 
 
-function custom_excerpt_length($length) {
+function custom_excerpt_length($length)
+{
     return 15;
 }
 
@@ -136,7 +144,8 @@ add_filter('excerpt_length', 'custom_excerpt_length', 999);
 
 
 
-function new_excerpt_more($more) {
+function new_excerpt_more($more)
+{
     return '…';
 }
 
@@ -145,7 +154,8 @@ add_filter('excerpt_more', 'new_excerpt_more');
 
 
 // Move Yoast to bottom
-function yoasttobottom() {
+function yoasttobottom()
+{
     return 'low';
 }
 
@@ -158,14 +168,17 @@ add_filter('wpseo_metabox_prio', 'yoasttobottom');
 /**
  * remove all html comments from wphead() and wpfooter()
  */
-add_action('get_header', function () {
-    ob_start(function ($buffer) {
+add_action('get_header', function ()
+{
+    ob_start(function ($buffer)
+    {
         $buffer = preg_replace('/<!--(.|s)*?-->/', '', $buffer);
 
         return $buffer;
     });
 });
-add_action('wp_footer', function () {
+add_action('wp_footer', function ()
+{
     ob_end_flush();
 });
 
@@ -175,23 +188,24 @@ add_action('wp_footer', function () {
 /**
  * add widget area
  */
-function init_widgets() {
+function init_widgets()
+{
 
     register_sidebar(array(
-        'name' => 'Sidebar',
-        'id' => 'primarywidgets',
+        'name'          => 'Sidebar',
+        'id'            => 'primarywidgets',
         'before_widget' => '<div class="primary-widgets">',
-        'after_widget' => '</div>',
-        'before_title' => '',
-        'after_title' => '',
+        'after_widget'  => '</div>',
+        'before_title'  => '',
+        'after_title'   => '',
     ));
     register_sidebar(array(
-        'name' => 'Footer',
-        'id' => 'secondarywidgets',
+        'name'          => 'Footer',
+        'id'            => 'secondarywidgets',
         'before_widget' => '<div class="secondary-widgets">',
-        'after_widget' => '</div>',
-        'before_title' => '',
-        'after_title' => '',
+        'after_widget'  => '</div>',
+        'before_title'  => '',
+        'after_title'   => '',
     ));
 }
 
@@ -220,7 +234,8 @@ remove_action('wp_head', 'wp_generator'); // Display the XHTML generator that is
 /**
  * add fast ajax handling
  */
-add_action('init', function () {
+add_action('init', function ()
+{
 
     add_rewrite_rule('ajax', 'wp-content/themes/lean/xhr.php', 'top');
     //    flush_rewrite_rules();

@@ -1,4 +1,4 @@
 jQuery(document).ready(function($){
-    console.log('AHOI');
+    console.log('A-HOI');
 //    alert('geronimo');
 });

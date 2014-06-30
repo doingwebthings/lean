@@ -4,14 +4,25 @@ Lean is a small wordpress-project-theme.
 
 What it does:
 
-- simple wordpress setup
-- use best practices from h5bp, bootstrap and friends as much as possible
-- **favicon** included yay
+**wordpress**
+
+- simple wordpress setup (only basic template files)
 - minimal markup for a lean start
+- markup is build with bootstrap in mind, menus are built using  https://github.com/twittem/wp-bootstrap-navwalker.
+- **favicon** included yay
 - take all theme-related features from "functionality plugin" and put it into the according include-files loaded by functions.php. This might be considered a bad practice but it does a good job for me.
-- load minified assets
-- uses **jQuery 1.11** and **Bootstrap 3** (shims for IE8 already included)
-- Grunt handles image-optimization, compiles the less files and uglifies javascript
+- load **minified assets** (both js and css)
+
+**frontend**
+
+- use best practices from **h5bp**, **bootstrap** and friends
+- **Bootstrap 3** shims for IE8 already included
+- which **Javascript-libraries** are included?
+- -  **jQuery 1.11**
+- -  **Modernizr**
+- -  **Modernizr**
+- Grunt-workflow for image-optimization (imagemin), javascript (uglify) and less (less, autoprefixer, cssmin)
+- simplified **BEM/OOCSS** for css (see header info in screen.less for example)
 
 ##To-Do
 
@@ -40,17 +51,16 @@ All these files are loaded by functions.php.
 
 Customize emails here.
 
-- does nothing yet
+- removes wordpress from default-emails, set from and from-name
+- caution: since this is in the theme you can´t override "pluggable" mail functions here
 
 ####shortcodes.php
 
 A file to add shortcodes.
 
-- does nothing yet
-
 ####template-tags.php
 
-A file for helper functions used in template files.
+A file for helper functions used in template files. base_url(), asset_url(), trunc(), is_child(), is_ancestor(), ... mostly functions already provided by wp but not to my liking.
 
 ####theme-setup.php
 

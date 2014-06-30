@@ -1,0 +1,31 @@
+/*
+simplified BEM
+• block (.box): no dashes in class-name: wrong: class-name, right: classname
+• element (.box-headline): element in block. decoupled naming, wrong: .box-h1, right: .box-headline
+• modifier (.box-headline--funky): adding alternatives to defaults... don´t use numbers (.box-headline--2)
+*/
+//module box
+.box {
+  display: block;
+  background-color: #ddd;
+
+  &-headline {
+    color: orangered;
+  }
+
+  &-headline--funky {
+    color: orange;
+  }
+
+  &-copy {
+    color: green;
+  }
+
+  &-link {
+    color: blue;
+
+    &:hover {
+      background-color: red;
+    }
+  }
+}

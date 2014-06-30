@@ -24,6 +24,7 @@ What it does:
 - -  **Modernizr**
 - -  **underscore**
 - simplified **BEM/OOCSS** for css (see header info in screen.less for example)
+- Grunt is installed in the root of the theme but bower runs in assets... that´s a bit stupid
 
 
 ##To-Do

@@ -136,7 +136,7 @@ module.exports = function(grunt){
                 },
                 files: [
                     'assets/css/styles.css',
-                    'assets/js/scripts.js'
+                    'assets/js/scripts.min.js'
                 ]
             }
         }

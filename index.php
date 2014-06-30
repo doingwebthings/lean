@@ -9,7 +9,12 @@
                 <h1 class="box-headline--funky">box-headline Funky</h1>
                 <p class="box-copy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis ex laudantium magnam nihil praesentium, veniam?</p>
                 <a class="box-link" href="#">mehr lesen</a>
-
+            </div>
+            <div class="box">
+                <h1 class="box-headline">box-headline 2</h1>
+                <h1 class="box-headline--funky">box-headline Funky</h1>
+                <p class="box-copy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis ex laudantium magnam nihil praesentium, veniam?</p>
+                <a class="box-link" href="#">mehr lesen</a>
             </div>
         </div>
     </div>

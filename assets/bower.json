@@ -2,9 +2,9 @@
   "name": "lean",
   "private": true,
   "dependencies": {
-    "bootstrap": "~3.0.3",
-    "modernizr": "~2.6.2",
-    "jquery": "~1.11.0",
+    "bootstrap": "latest",
+    "modernizr": "latest",
+    "jquery": "~1.11",
     "underscore": "~1.6.0",
     "lesshat": "~3.0.2"
   },

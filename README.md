@@ -16,6 +16,7 @@ What it does:
 **Frontend**
 
 - use best practices from **h5bp**, **bootstrap** and friends
+- It´s mobile first, yay. All screen-sizes are in seperate files.
 - **Bootstrap 3** shims for IE8 already included
 - Grunt-workflow for image-optimization (imagemin), javascript (uglify) and less (less, autoprefixer, cssmin)
 - which **Javascript-libraries** are included?

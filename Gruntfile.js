@@ -38,7 +38,7 @@ module.exports = function(grunt){
                 options: {
                     compress: false,
                     sourceMap: true,
-                    sourceMapFilename: 'assets/css/styles.css.map'
+                    sourceMapFilename: 'styles.css.map'
                 }
             }
         },
@@ -65,7 +65,7 @@ module.exports = function(grunt){
                     'assets/js/scripts.min.js': ['assets/js/scripts.min.js']
                 },
                 options: {
-                    sourceMap: 'assets/js/scripts.min.js.map',
+                    sourceMap: './scripts.min.js.map',
                     compress: {
                         drop_console: true
                     }

@@ -1,10 +1,10 @@
 #Lean
 
-Lean is a small wordpress-project-theme.
+Lean is a simple and small WordPress starter theme.
 
 What it does:
 
-**wordpress**
+**WordPress**
 
 - simple wordpress setup (only basic template files)
 - minimal markup for a lean start
@@ -13,7 +13,7 @@ What it does:
 - take all theme-related features from "functionality plugin" and put it into the according include-files loaded by functions.php. This might be considered a bad practice but it does a good job for me.
 - load **minified assets** (both js and css)
 
-**frontend**
+**Frontend**
 
 - use best practices from **h5bp**, **bootstrap** and friends
 - **Bootstrap 3** shims for IE8 already included
@@ -24,11 +24,11 @@ What it does:
 - -  **underscore**
 - simplified **BEM/OOCSS** for css (see header info in screen.less for example)
 
+
 ##To-Do
 
 - Grunt: create image-sprites (and svg-sprites)
 - move to jQuery 2 sometime
-
 
 ##Defaults
 

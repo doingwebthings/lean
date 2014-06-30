@@ -17,11 +17,11 @@ What it does:
 
 - use best practices from **h5bp**, **bootstrap** and friends
 - **Bootstrap 3** shims for IE8 already included
+- Grunt-workflow for image-optimization (imagemin), javascript (uglify) and less (less, autoprefixer, cssmin)
 - which **Javascript-libraries** are included?
 - -  **jQuery 1.11**
 - -  **Modernizr**
-- -  **Modernizr**
-- Grunt-workflow for image-optimization (imagemin), javascript (uglify) and less (less, autoprefixer, cssmin)
+- -  **underscore**
 - simplified **BEM/OOCSS** for css (see header info in screen.less for example)
 
 ##To-Do

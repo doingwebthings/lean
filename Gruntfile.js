@@ -1,6 +1,7 @@
 //these files are concatenated to scripts.min.js
 var scriptfiles = [
     'assets/bower_components/jquery/dist/jquery.js',
+    'assets/bower_components/underscore/underscore.js',
     'assets/bower_components/bootstrap/js/transition.js',
 //                        'assets/bower_components/bootstrap/js/alert.js',
 //                        'assets/bower_components/bootstrap/js/button.js',

@@ -1,4 +1,4 @@
-<div class="container-fluid footer-section">
+<div class="container-fluid footer">
 
     <div class="container">
         <footer>

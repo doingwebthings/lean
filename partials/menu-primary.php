@@ -1,6 +1,6 @@
-<div class="container-fluid">
-    <div class="row row-menuprimary">
-        <header class="top-header">
+<div class="container-fluid primarymenu">
+    <div class="container">
+        <div class="row">
             <nav class="navbar navbar-default" role="navigation">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-primary-collapse">
@@ -26,6 +26,6 @@
                     'walker'          => new wp_bootstrap_navwalker(),
                 )); ?>
             </nav>
-        </header>
+        </div>
     </div>
 </div>

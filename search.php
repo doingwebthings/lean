@@ -1,7 +1,7 @@
 <?php include('partials/header.php'); ?>
 <div class="container">
     <div class="row">
-        <div class="main" role="main">
+        <div class="maincontent" role="main">
             <?php if (have_posts()) : ?>
                 <header>
                     <h1><?php printf(__('Search Results for: %s', 'lean'), '<span>' . get_search_query() . '</span>'); ?></h1>

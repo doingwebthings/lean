@@ -31,14 +31,39 @@ simplified BEM
 //  }
 //}
 
+//bootstrap remove headline margins
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+
+.navbar-header {
+  .make-xs-column(12);
+}
+
+//padding is needed in bigger screens
+.navbar-brand {
+  padding-left: 0;
+}
+
+.navbar {
+  margin-bottom: 0;
+}
+
+.navbar-default {
+  background-color: transparent;
+}
+
+.row-top {
+  background-color: #fff;
+}
+
 /*
-module article
+module article: used by content.php to display articles
 */
 .article {
   .make-xs-column(12);
 
   background-color: #fff;
-  border: 1px solid #ddd;
   margin: 0 0 1em 0;
   padding-bottom: 1em;
 
@@ -65,7 +90,6 @@ module comments = the container for comments
   .make-xs-column(12);
 
   background-color: #fff;
-  border: 1px solid #ddd;
   margin: 0 0 1em 0;
   padding-bottom: 1em;
 
@@ -107,53 +131,10 @@ module comment: single comments
     padding: 0.5em;
     background-color: #f5f5f5;
   }
-  //
-  //  &.depth-1 {
-  //    border-left: 10px;
-  //    border-color: #aaa;
-  //  }
-  //  &.depth-2 {
-  //    border-left: 20px;
-  //    border-color: #bbb;
-  //  }
-  //  &.depth-3 {
-  //    border-left: 30px;
-  //    border-color: #ccc;
-  //  }
-  //  &.depth-4 {
-  //    border-left: 40px;
-  //    border-color: #ddd;
-  //  }
-  //  &.depth-5 {
-  //    border-left: 50px;
-  //    border-color: #eee;
-  //  }
-
-}
-
-.navbar-header {
-  .make-xs-column(12);
 }
 
 .widgets {
   .hidden-xs;
-}
-
-//padding is needed in bigger screens
-.navbar-brand {
-  padding-left: 0;
-}
-
-.navbar {
-  margin-bottom: 0;
-}
-
-.navbar-default {
-  background-color: transparent;
-}
-
-.row-top {
-  background-color: #fff;
 }
 
 //remove custom comment submit button... wp u rock!
@@ -179,14 +160,5 @@ module comment: single comments
   border-top: 1px solid #eee;
   margin-top: 2em;
   padding: 1em;
-}
-
-//bootstrap remove headline margins?
-h1, h2, h3, h4, h5, h6 {
-  margin: 0;
-}
-
-.primarymenu header {
-  //  .make-row();
 }
 

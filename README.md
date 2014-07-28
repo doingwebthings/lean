@@ -30,7 +30,7 @@ What it does:
 ##To-Do
 
 - Grunt: create image-sprites (and svg-sprites)
-- move to jQuery 2 sometime
+- move to jQuery 2 sometime?
 
 ##Defaults
 

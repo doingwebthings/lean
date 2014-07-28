@@ -66,6 +66,9 @@ if (is_admin())
 }
 
 
+
+
+
 /**
  * add template info to admin-bar
  */

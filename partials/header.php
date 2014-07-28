@@ -9,10 +9,6 @@
 
     <link rel="shortcut icon" type="image/x-icon" href="<?php echo asset_url(); ?>img/favicon.ico">
 
-    <script type="text/javascript">
-        var baseurl = '<?php echo base_url(); ?>';
-    </script>
-
     <?php wp_head(); ?>
 
     <!--[if lt IE 9]>

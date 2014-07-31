@@ -46,7 +46,7 @@ if (is_admin())
         }
 
         $role = $wp_roles->get_role('editor');
-        $wp_roles->add_role('editor_in_chief', 'Editor-in-Chief', $role->capabilities);
+        $wp_roles->add_role('editor_in_chief', __('Editor-in-Chief'), $role->capabilities);
 
         $eic = get_role('editor_in_chief');
         $eic->add_cap('edit_theme_options');

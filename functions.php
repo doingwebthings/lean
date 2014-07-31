@@ -11,5 +11,6 @@ include('includes/mail-setup.php');
 include('includes/template-tags.php');
 include('includes/shortcodes.php');
 include('includes/cpt-loader.php');
+include('includes/ajax.php');
 
 

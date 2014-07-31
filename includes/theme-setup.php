@@ -20,6 +20,16 @@ include('libs/wp_bootstrap_navwalker.php');
 
 
 
+add_action('after_setup_theme', 'my_theme_setup');
+function my_theme_setup()
+{
+    load_theme_textdomain('lean', get_template_directory() . '/languages');
+}
+
+
+
+
+
 /**
  * adding menus
  */
@@ -48,9 +58,9 @@ function enqueue_minified_scripts()
 
     //add some url-vars to end of <body> (loaded before frontend-scripts)
     wp_localize_script('fontend-scripts', 'url', array(
-            'base'  => get_home_url(),
-            'ajax'  => admin_url('admin-ajax.php'),
-            'nonce' => wp_create_nonce()
+            'base' => get_home_url(),
+            'ajax' => admin_url('admin-ajax.php'),
+            //            'nonce' => wp_create_nonce()
         )
     );
 
@@ -274,100 +284,6 @@ remove_action('wp_head', 'wlwmanifest_link'); // Display the link to the Windows
 //remove_action('wp_head', 'start_post_rel_link', 10, 0); // start link
 //remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0); // Display relational links for the posts adjacent to the current post.
 remove_action('wp_head', 'wp_generator'); // Display the XHTML generator that is generated on the wp_head hook, WP version
-
-
-
-
-
-/**
- * Roots_Walker_Comment
- * Use Bootstrap's media object for listing comments
- *
- * @link http://getbootstrap.com/components/#media
- */
-class Roots_Walker_Comment extends Walker_Comment
-{
-    function start_lvl(&$output, $depth = 0, $args = array())
-    {
-        $GLOBALS['comment_depth'] = $depth + 1; ?>
-        <ul <?php comment_class('comment-' . get_comment_ID()); ?>>
-    <?php
-    }
-
-
-    function end_lvl(&$output, $depth = 0, $args = array())
-    {
-        $GLOBALS['comment_depth'] = $depth + 1;
-        echo '</ul>';
-    }
-
-
-    function start_el(&$output, $comment, $depth = 0, $args = array(), $id = 0)
-    {
-        $depth++;
-        $GLOBALS['comment_depth'] = $depth;
-        $GLOBALS['comment']       = $comment;
-
-        if (!empty($args['callback']))
-        {
-            call_user_func($args['callback'], $comment, $args, $depth);
-
-            return;
-        }
-
-        extract($args, EXTR_SKIP); ?>
-
-    <li id="comment-<?php comment_ID(); ?>" <?php comment_class('comment-' . get_comment_ID()); ?>>
-        <?php echo get_avatar($comment, $size = '64'); ?>
-        <div class="comment-body">
-        <time class="comment-datetime" datetime="<?php echo comment_date('c'); ?>">
-            <a href="<?php echo htmlspecialchars(get_comment_link($comment->comment_ID)); ?>"><?php printf(__('%1$s', 'lean'), get_comment_date(), get_comment_time()); ?></a>
-        </time>
-        <h4 class="comment-heading"><?php echo ucfirst(get_comment_author_link()); ?> says: </h4>
-        <?php edit_comment_link(__('(Edit)', 'lean'), '', ''); ?>
-
-        <?php if ($comment->comment_approved == '0') : ?>
-        <div class="alert alert-info">
-            <?php _e('Your comment is awaiting moderation.', 'lean'); ?>
-        </div>
-    <?php endif; ?>
-
-        <div class="comment-text"> <?php comment_text(); ?></div>
-        <?php comment_reply_link(array_merge($args, array('depth' => $depth, 'max_depth' => $args['max_depth']))); ?>
-    <?php
-    }
-
-
-    function end_el(&$output, $comment, $depth = 0, $args = array())
-    {
-        if (!empty($args['end-callback']))
-        {
-            call_user_func($args['end-callback'], $comment, $args, $depth);
-
-            return;
-        }
-        echo "</div></li>";
-    }
-}
-
-
-
-
-
-function roots_get_avatar($avatar, $type)
-{
-    if (!is_object($type))
-    {
-        return $avatar;
-    }
-
-    $avatar = str_replace("class='avatar", "class='avatar pull-left media-object", $avatar);
-
-    return $avatar;
-}
-
-add_filter('get_avatar', 'roots_get_avatar', 10, 2);
-
 
 
 //PROJECT-SPECIFIC CODE//////////////////////////////////////////////////////////////////////////////////////////////////////

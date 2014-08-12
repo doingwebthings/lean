@@ -1,4 +1,4 @@
-//these files are concatenated to scripts.min.js
+//these files are concatenated to scripts.min.js; use only what you need to keep the filesize low
 var scriptfiles = [
     'bower_components/jquery/dist/jquery.js',
     'bower_components/underscore/underscore.js',

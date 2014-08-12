@@ -6,9 +6,9 @@ What it does:
 
 **WordPress**
 
-- simple wordpress setup (only basic template files)
+- simple WordPress setup (only basic template files)
 - minimal markup for a lean start
-- markup is build with bootstrap in mind, menus are built using  https://github.com/twittem/wp-bootstrap-navwalker.
+- markup is build with **bootstrap** in mind, menus are built using  [https://github.com/twittem/wp-bootstrap-navwalker]().
 - **favicon** included yay
 - take all theme-related features from "functionality plugin" and put it into the according include-files loaded by functions.php. This might be considered a bad practice but it does a good job for me.
 - load **minified assets** (both js and css)
@@ -20,21 +20,16 @@ What it does:
 - **Bootstrap 3** shims for IE8 already included
 - Grunt-workflow for image-optimization (imagemin), javascript (uglify) and less (less, autoprefixer, cssmin)
 - which **Javascript-libraries** are included?
-- -  **jQuery 1.11**
-- -  **Modernizr**
-- -  **underscore**
-- simplified **BEM/OOCSS** for css (see header info in screen.less for example)
-- Grunt is installed in the root of the theme but bower runs in assets... that´s a bit stupid
+    - **jQuery 1.11** (still supporting oldies)
+    - **Modernizr**
+    - **underscore**
+- simplified **BEM/OOCSS** for css (see header info in [screen.less](https://github.com/doingwebthings/lean/blob/master/assets/less/screen.less) for example)
 
 
-##To-Do
-
-- Grunt: create image-sprites (and svg-sprites)
-- move to jQuery 2 sometime?
 
 ##Defaults
 
-### Files in /inludes/
+### Files in /includes/
 
 All these files are loaded by functions.php.
 
@@ -53,7 +48,7 @@ All these files are loaded by functions.php.
 
 Customize emails here.
 
-- removes wordpress from default-emails, set from and from-name
+- removes 'WordPress' from default-emails, set **from** and **from-name**
 - caution: since this is in the theme you can´t override "pluggable" mail functions here
 
 ####shortcodes.php
@@ -70,10 +65,12 @@ A file for helper functions used in template files. base_url(), asset_url(), tru
 - load **asset files**: js/scripts.min.js (all js) at the bottom, js/modernizr.min.js in head and css/styles.css in head
 - **remove comments** from wp_header() and wp_footer()
 - **various filters** (title, excerpt, attachement-links, ...)
-- **remove some wordpress stuff** (feed-links, wp-generator, ...) not activated by default
-- **bootstrap navbar** with https://github.com/twittem/wp-bootstrap-navwalker
+- **remove some WordPress stuff** (feed-links, wp-generator, ...) not activated by default
+- **bootstrap navbar** with [https://github.com/twittem/wp-bootstrap-navwalker]()
 - **image resizing**: BFI_Thumbs available for usage in template files
 
 ##To-Do
 
 - use more semantic markup (and CSS-classes) suitable for blogs AND portfolio-sites
+- Grunt: create image-sprites (and svg-sprites)
+- move to jQuery 2 sometime?

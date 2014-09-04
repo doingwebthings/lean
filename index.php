@@ -1,28 +1,7 @@
 <?php get_template_part('partials/header'); ?>
 
+<?php get_template_part('partials/bootstrap-showcase'); ?>
 
-<?php /*?>
-    <div class="container-fluid rowexample1">
-        <div class="container">
-            <div class="row">
-                <div class="box">
-                    <h1 class="box-headline">box-headline</h1>
-                    <h1 class="box-headline--funky">box-headline Funky</h1>
-                    <p class="box-copy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis ex laudantium magnam nihil praesentium, veniam?</p>
-                    <a class="box-link" href="#">mehr lesen</a>
-                </div>
-                <div class="box">
-                    <h1 class="box-headline">box-headline 2</h1>
-                    <h1 class="box-headline--funky">box-headline Funky</h1>
-                    <p class="box-copy">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis ex laudantium magnam nihil praesentium, veniam?</p>
-                    <a class="box-link" href="#">mehr lesen</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-<?php */
-?>
 
     <div class="container-fluid main">
         <div class="container">

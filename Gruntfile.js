@@ -32,7 +32,7 @@ module.exports = function(grunt){
             dist: {
                 files: {
                     'assets/css/styles.css': [
-                        'assets/less/styles.less'
+                        'assets/less/index.less'
                     ]
                 },
                 options: {

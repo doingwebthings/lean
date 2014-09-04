@@ -31,31 +31,61 @@ simplified BEM
 //  }
 //}
 
+//change bootstrap classes bootstrap because i wanna
+.alert {
+  border: none;
+}
+
+
+
+
+
+.label {
+  border-radius: 0px !important;
+}
+
+
+
+
+
 //bootstrap remove headline margins
 h1, h2, h3, h4, h5, h6 {
-  margin: 0;
+  //  margin: 0;
 }
+
+
+
+
 
 .navbar-header {
   .make-xs-column(12);
 }
 
-//padding is needed in bigger screens
-.navbar-brand {
-  padding-left: 0;
-}
 
+
+
+
+//padding is needed in bigger screens
+//.navbar-brand {
+//  padding-left: 0;
+//}
+//
 .navbar {
   margin-bottom: 0;
 }
 
-.navbar-default {
-  background-color: transparent;
-}
 
-.row-top {
-  background-color: #fff;
-}
+
+
+
+//
+//.navbar-default {
+//  background-color: transparent;
+//}
+//
+//.row-top {
+//  background-color: #fff;
+//}
 
 /*
 module article: used by content.php to display articles
@@ -83,6 +113,10 @@ module article: used by content.php to display articles
   }
 }
 
+
+
+
+
 /*
 module comments = the container for comments
 */
@@ -107,6 +141,10 @@ module comments = the container for comments
     padding-left: 0;
   }
 }
+
+
+
+
 
 /*
 module comment: single comments
@@ -133,28 +171,52 @@ module comment: single comments
   }
 }
 
+
+
+
+
 .widgets {
   .hidden-xs;
 }
+
+
+
+
 
 //remove custom comment submit button... wp u rock!
 .form-submit {
   display: none;
 }
 
+
+
+
+
 //main area for content, usually the place for page-content, articles, ...
 .maincontent {
   .make-md-column(12);
 }
+
+
+
+
 
 //"default-container" for wordpress widgets
 .widgets {
   .make-md-column(2);
 }
 
+
+
+
+
 .top-header {
   margin-bottom: 2em;
 }
+
+
+
+
 
 .footer-section {
   border-top: 1px solid #eee;

@@ -47,20 +47,16 @@ register_nav_menus(array(
  */
 function enqueue_minified_scripts()
 {
-    //goodbye jquery
-    wp_deregister_script('jquery');
-
     //hello all minified scripts (jquery included)
-    wp_register_script('fontend-scripts', asset_url() . 'js/scripts.min.js', array(), null, true);
+    wp_register_script('frontend-scripts', asset_url() . 'js/scripts.min.js', array(), null, true);
 
     //load at the end of <body>
-    wp_enqueue_script('fontend-scripts');
+    wp_enqueue_script('frontend-scripts');
 
     //add some url-vars to end of <body> (loaded before frontend-scripts)
     wp_localize_script('fontend-scripts', 'url', array(
             'base' => get_home_url(),
             'ajax' => admin_url('admin-ajax.php'),
-            //            'nonce' => wp_create_nonce()
         )
     );
 

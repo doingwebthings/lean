@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * scriptfiles: these files are concatenated to scripts.min.js;
  * use only what you need to keep the filesize low
@@ -21,10 +23,7 @@ var scriptfiles = [
 ];
 
 
-
-
 //grunt
-'use strict';
 module.exports = function(grunt){
 
     //jit-grunt
@@ -37,9 +36,10 @@ module.exports = function(grunt){
 
     //configure tasks
     grunt.initConfig({
+
         //LESS: assets/less/index.less -> assets/css/styles.css (+assets/css/styles.css.map)
         less: {
-            dist: {
+            dev: {
                 files: {
                     'assets/css/styles.css': [
                         'assets/less/index.less'
@@ -48,17 +48,30 @@ module.exports = function(grunt){
                 options: {
                     compress: false,
                     sourceMap: true,
-                    cleancss: true,
-                    sourceMapFilename: 'styles.css.map'
+                    cleancss: false,
+                    sourceMapFilename: 'assets/css/styles.css.map'
+                }
+            },
+            dist: {
+                files: {
+                    'assets/css/styles.css': [
+                        'assets/less/index.less'
+                    ]
+                },
+                options: {
+                    compress: false,
+                    cleancss: true
                 }
             }
         },
+
         //autoprefix all css
         autoprefixer: {
             options: {
                 browsers: ['last 2 version', 'ie 8', 'ie 9']
             }
         },
+
         //concat files
         concat: {
             js: {
@@ -69,6 +82,7 @@ module.exports = function(grunt){
                 dest: 'assets/js/scripts.min.js'
             }
         },
+
         //uglify and concat js files
         uglify: {
             dist: {
@@ -83,6 +97,7 @@ module.exports = function(grunt){
                 }
             }
         },
+
         //image optimization
         imagemin: {
             options: {
@@ -103,7 +118,8 @@ module.exports = function(grunt){
                 ]
             }
         },
-        //spritesmith
+
+        //spritesmith: create spritemap from png-files and also sprites.less
         sprite: {
             all: {
                 src: 'assets/img/sprites/*.png',
@@ -111,53 +127,63 @@ module.exports = function(grunt){
                 destCSS: 'assets/less/sprites.less'
             }
         },
+
         //show window when done
         notify: {
+            default: {
+                options: {
+                    title: 'Task "default" done',
+                    message: 'The project has been built and all tasks have run successfully.'
+                }
+            },
             less: {
                 options: {
-                    title: 'Task less is done',
-                    message: 'Now keep on coding'
+                    title: 'Task "less" is done',
+                    message: 'All files have been processed'
                 }
             },
             js: {
                 options: {
-                    title: 'Task Javascript is done',
-                    message: 'Now keep on coding'
+                    title: 'Task "javascript" is done',
+                    message: 'All files have been processed'
+                }
+            },
+            sprites: {
+                options: {
+                    title: 'Task "sprites" is done',
+                    message: 'All files have been processed'
                 }
             }
         },
-        //watch job
+
+        //watch job: watch for changes in sprites, less and js
         watch: {
             sprite: {
                 files: ['assets/img/sprites/*.png'],
-                tasks: ['sprite']
+                tasks: ['sprite', 'notify:sprites']
             },
             less: {
-                files: [
-                    'assets/less/*.less'
-                ],
-                tasks: ['less']
+                files: ['assets/less/*.less'],
+                tasks: ['less:dev', 'notify:less']
             },
             js: {
                 files: [
                     'assets/js/scripts.js'
                 ],
-                tasks: ['concat']
+                tasks: ['concat', 'notify:js']
             }
         }
     });
 
 
-
-
-
     //default for production: files are concatenated and uglified
     grunt.registerTask('default', [
         'sprite',
-        'less',
+        'less:dist',
         'autoprefixer',
         'uglify',
-        'imagemin'
+        'imagemin',
+        'notify:default'
     ]);
 
 

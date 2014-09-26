@@ -1,7 +1,10 @@
-//these files are concatenated to scripts.min.js; use only what you need to keep the filesize low
+/**
+ * scriptfiles: these files are concatenated to scripts.min.js;
+ * use only what you need to keep the filesize low
+ **/
 var scriptfiles = [
-    'bower_components/jquery/dist/jquery.js',
-    'bower_components/underscore/underscore.js',
+    'bower_components/jquery/dist/jquery.js', //jquery
+    //'bower_components/underscore/underscore.js', //underscore
     'bower_components/bootstrap/js/transition.js',
 //                        'bower_components/bootstrap/js/alert.js',
 //                        'bower_components/bootstrap/js/button.js',
@@ -14,7 +17,7 @@ var scriptfiles = [
 //                        'bower_components/bootstrap/js/scrollspy.js',
 //                        'bower_components/bootstrap/js/tab.js',
 //                        'bower_components/bootstrap/js/affix.js',
-    'assets/js/scripts.js'
+    'assets/js/scripts.js' //
 ];
 
 
@@ -23,11 +26,18 @@ var scriptfiles = [
 //grunt
 'use strict';
 module.exports = function(grunt){
-    require('load-grunt-tasks')(grunt);
 
+    //jit-grunt
+    require('jit-grunt')(grunt, {
+        sprite: 'grunt-spritesmith'
+    });
+
+    //time-grunt
+    require('time-grunt')(grunt);
+
+    //configure tasks
     grunt.initConfig({
-
-        //LESS
+        //LESS: assets/less/index.less -> assets/css/styles.css (+assets/css/styles.css.map)
         less: {
             dist: {
                 files: {
@@ -38,26 +48,27 @@ module.exports = function(grunt){
                 options: {
                     compress: false,
                     sourceMap: true,
+                    cleancss: true,
                     sourceMapFilename: 'styles.css.map'
                 }
             }
         },
-
-        //minify css
-        cssmin: {
-            minify: {
-                src: 'assets/css/styles.css',
-                dest: 'assets/css/styles.css'
-            }
-        },
-
         //autoprefix all css
         autoprefixer: {
             options: {
                 browsers: ['last 2 version', 'ie 8', 'ie 9']
             }
         },
-
+        //concat files
+        concat: {
+            js: {
+                options: {
+                    separator: ';'
+                },
+                src: scriptfiles,
+                dest: 'assets/js/scripts.min.js'
+            }
+        },
         //uglify and concat js files
         uglify: {
             dist: {
@@ -72,7 +83,6 @@ module.exports = function(grunt){
                 }
             }
         },
-
         //image optimization
         imagemin: {
             options: {
@@ -93,51 +103,46 @@ module.exports = function(grunt){
                 ]
             }
         },
-
+        //spritesmith
+        sprite: {
+            all: {
+                src: 'assets/img/sprites/*.png',
+                destImg: 'assets/img/spritesheet.png',
+                destCSS: 'assets/less/sprites.less'
+            }
+        },
         //show window when done
         notify: {
-            default: {
+            less: {
                 options: {
-                    title: 'Task done',
+                    title: 'Task less is done',
+                    message: 'Now keep on coding'
+                }
+            },
+            js: {
+                options: {
+                    title: 'Task Javascript is done',
                     message: 'Now keep on coding'
                 }
             }
         },
-
-        //concat files
-        concat: {
-            js: {
-                options: {
-                    separator: ';'
-                },
-                src: scriptfiles,
-                dest: 'assets/js/scripts.min.js'
-            }
-        },
-
-
         //watch job
         watch: {
+            sprite: {
+                files: ['assets/img/sprites/*.png'],
+                tasks: ['sprite']
+            },
             less: {
                 files: [
                     'assets/less/*.less'
                 ],
-                tasks: ['less', 'notify']
+                tasks: ['less']
             },
             js: {
                 files: [
                     'assets/js/scripts.js'
                 ],
-                tasks: [ 'concat', 'notify']
-            },
-            livereload: {
-                options: {
-                    livereload: true
-                },
-                files: [
-                    'assets/css/styles.css',
-                    'assets/js/scripts.min.js'
-                ]
+                tasks: ['concat']
             }
         }
     });
@@ -146,21 +151,16 @@ module.exports = function(grunt){
 
 
 
-    //unused but installed: newer, spritesmith, svg-sprite, clean, uncss
-
     //default for production: files are concatenated and uglified
     grunt.registerTask('default', [
+        'sprite',
         'less',
         'autoprefixer',
-        'cssmin',
         'uglify',
-        'imagemin',
-        'notify'
+        'imagemin'
     ]);
 
-    //dev is "watch": no uglify and minification
-    grunt.registerTask('dev', [
-        'watch'
-    ]);
+
+
 
 };

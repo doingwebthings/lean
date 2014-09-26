@@ -1,37 +1,36 @@
 {
-  "name": "lean",
-  "author": "Rolf Meyer",
-  "homepage": "http://doingwebthings.com",
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "http://opensource.org/licenses/MIT"
+    "name": "lean",
+    "author": "Rolf Meyer",
+    "homepage": "http://doingwebthings.com",
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "http://opensource.org/licenses/MIT"
+        }
+    ],
+    "engines": {
+        "node": ">= 0.10.0"
+    },
+    "devDependencies": {
+        "grunt": "~0.4.2",
+        "grunt-autoprefixer": "^0.8.0",
+        "grunt-contrib-clean": "~0.5.0",
+        "grunt-contrib-concat": "^0.4.0",
+        "grunt-contrib-cssmin": "^0.10.0",
+        "grunt-contrib-imagemin": "^0.7.1",
+        "grunt-contrib-jshint": "~0.6.4",
+        "grunt-contrib-less": "~0.8.1",
+        "grunt-contrib-uglify": "~0.2.4",
+        "grunt-contrib-watch": "~0.5.3",
+        "grunt-newer": "^0.7.0",
+        "grunt-notify": "^0.3.1",
+        "grunt-svg-sprite": "^0.3.2",
+        "grunt-uncss": "^0.3.4",
+        "jit-grunt": "^0.8.0",
+        "jpegtran-bin": "0.2.0",
+        "load-grunt-tasks": "^0.6.0",
+        "matchdep": "~0.1.2",
+        "time-grunt": "^1.0.0",
+        "grunt-spritesmith": "^2.1.1"
     }
-  ],
-  "engines": {
-    "node": ">= 0.10.0"
-  },
-  "devDependencies": {
-    "grunt": "~0.4.2",
-    "grunt-autoprefixer": "^0.8.0",
-    "grunt-contrib-clean": "~0.5.0",
-    "grunt-contrib-concat": "^0.4.0",
-    "grunt-contrib-cssmin": "^0.10.0",
-    "grunt-contrib-imagemin": "^0.7.1",
-    "grunt-contrib-jshint": "~0.6.4",
-    "grunt-contrib-less": "~0.8.1",
-    "grunt-contrib-uglify": "~0.2.4",
-    "grunt-contrib-watch": "~0.5.3",
-    "grunt-newer": "^0.7.0",
-    "grunt-notify": "^0.3.0",
-    "grunt-svg-sprite": "^0.3.2",
-    "grunt-uncss": "^0.3.4",
-    "jpegtran-bin": "0.2.0",
-    "load-grunt-tasks": "^0.6.0",
-    "matchdep": "~0.1.2",
-    "time-grunt": "^0.3.2"
-  },
-  "dependencies": {
-    "grunt-spritesmith": "^2.1.1"
-  }
 }

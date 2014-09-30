@@ -4,8 +4,7 @@
  *
  */
 
-if (is_admin())
-{
+if (is_admin()) {
 
 
 
@@ -13,8 +12,7 @@ if (is_admin())
      * remove wordpress logo in admin
      */
 
-    add_action('admin_bar_menu', function ($wp_admin_bar)
-    {
+    add_action('admin_bar_menu', function ($wp_admin_bar) {
         $wp_admin_bar->remove_node('wp-logo');
     }, 999);
 
@@ -25,8 +23,7 @@ if (is_admin())
     /**
      * remove footer text in admin
      */
-    add_filter('admin_footer_text', function ()
-    {
+    add_filter('admin_footer_text', function () {
         echo '';
     });
 
@@ -37,11 +34,9 @@ if (is_admin())
     /**
      * setup editor-in-chief: an editor who can edit theme options (edit menus)
      */
-    add_filter('init', function ()
-    {
+    add_filter('init', function () {
         global $wp_roles;
-        if (!isset($wp_roles))
-        {
+        if ( ! isset($wp_roles)) {
             $wp_roles = new WP_Roles();
         }
 
@@ -59,10 +54,105 @@ if (is_admin())
     /**
      * add lines in left admin bar
      */
-    add_action('admin_head', function ()
-    {
+    add_action('admin_head', function () {
         echo ' <style type="text/css">#adminmenu a {font-size: 12px !important;}#adminmenu li.wp-menu-separator {background: #666;}#adminmenu li.wp-menu-separator {height: 1px !important;border-width: 0px 0;border-style: solid;cursor: inherit;}</style>';
     });
+
+
+
+
+
+    /**
+     * add categories to media
+     */
+    function enableMediaCategories() {
+        register_taxonomy('kategorien', 'attachment', array(
+            'labels'            => array(
+                'name'              => 'Kategorien',
+                'singular_name'     => 'Kategorien',
+                'search_items'      => 'Kategorien suchen',
+                'all_items'         => 'Alle Kategorien',
+                'parent_item'       => 'Eltern-Kategorie',
+                'parent_item_colon' => 'Eltern-Kategorie:',
+                'edit_item'         => 'Kategorie bearbeiten',
+                'update_item'       => 'Kategorie ändern',
+                'add_new_item'      => 'Kategorie erstellen',
+                'new_item_name'     => 'Neue Kategorie',
+                'menu_name'         => 'Kategorien',
+            ),
+            'hierarchical'      => true,
+            'query_var'         => true,
+            'rewrite'           => true,
+            'show_admin_column' => true,
+        ));
+    }
+
+    add_action('init', 'enableMediaCategories');
+
+
+
+
+    /**
+     * add post-types to "right-now" box on dashboard
+     */
+    function addPostTypesToRightNow() {
+        $showTaxonomies = 1;
+        // Custom taxonomies counts
+        if ($showTaxonomies) {
+            $taxonomies = get_taxonomies(array('_builtin' => false), 'objects');
+            foreach ($taxonomies as $taxonomy) {
+                $num_terms            = wp_count_terms($taxonomy->name);
+                $num                  = number_format_i18n($num_terms);
+                $text                 = _n($taxonomy->labels->singular_name, $taxonomy->labels->name, $num_terms);
+                $associated_post_type = $taxonomy->object_type;
+                if (current_user_can('manage_categories')) {
+                    $output = '<a href="edit-tags.php?taxonomy=' . $taxonomy->name . '&post_type=' . $associated_post_type[0] . '">' . $num . ' ' . $text . '</a>';
+                }
+                echo '<li class="taxonomy-count">' . $output . ' </li>';
+            }
+        }
+        // Custom post types counts
+        $post_types = get_post_types(array('_builtin' => false), 'objects');
+        foreach ($post_types as $post_type) {
+            if ($post_type->show_in_menu == false) {
+                continue;
+            }
+            $num_posts = wp_count_posts($post_type->name);
+            $num       = number_format_i18n($num_posts->publish);
+            $text      = _n($post_type->labels->singular_name, $post_type->labels->name, $num_posts->publish);
+            if (current_user_can('edit_posts')) {
+                $output = '<a href="edit.php?post_type=' . $post_type->name . '">' . $num . ' ' . $text . '</a>';
+            }
+            // pending items count
+            if ($num_posts->pending > 0) {
+                $num  = number_format_i18n($num_posts->pending);
+                $text = _n($post_type->labels->singular_name . ' pending', $post_type->labels->name . ' pending', $num_posts->pending);
+                if (current_user_can('edit_posts')) {
+                    $output .= '<a class="waiting" href="edit.php?post_status=pending&post_type=' . $post_type->name . '">' . $num . ' pending</a>';
+                }
+            }
+            echo '<li class="page-count ' . $post_type->name . '-count">' . $output . '</td>';
+        }
+    }
+
+    add_action('dashboard_glance_items', 'addPostTypesToRightNow');
+
+
+
+
+
+    function removeDashboardWidgets() {
+        // remove_meta_box('dashboard_right_now', 'dashboard', 'normal');   // Right Now
+        // remove_meta_box('dashboard_recent_comments', 'dashboard', 'normal'); // Recent Comments
+        // remove_meta_box('dashboard_incoming_links', 'dashboard', 'normal');  // Incoming Links
+        // remove_meta_box('dashboard_plugins', 'dashboard', 'normal');   // Plugins
+        // remove_meta_box('dashboard_quick_press', 'dashboard', 'side');  // Quick Press
+        // remove_meta_box('dashboard_recent_drafts', 'dashboard', 'side');  // Recent Drafts
+        // remove_meta_box('dashboard_primary', 'dashboard', 'side');   // WordPress blog
+        // remove_meta_box('dashboard_secondary', 'dashboard', 'side');   // Other WordPress News
+    }
+
+    add_action('wp_dashboard_setup', 'removeDashboardWidgets');
 }
 
 
@@ -70,39 +160,18 @@ if (is_admin())
 
 
 /**
- * add template info to admin-bar
+ * remove WordPress logo from admin bar
  */
-add_filter('admin_bar_menu', function ($wp_admin_bar)
-{
-    $args = array(
-        'id'    => 'template',
-        'title' => 'Template: ' . get_current_template() . '</span>',
-    );
-    $wp_admin_bar->add_node($args);
-}, 999);
+function removeWpLogo() {
 
-
-
-
-
-add_filter('template_include', 'var_template_include', 1000);
-function var_template_include($t)
-{
-    $GLOBALS['current_theme_template'] = basename($t);
-
-    return $t;
+    global $wp_admin_bar;
+    $wp_admin_bar->remove_menu('wp-logo');
 }
 
+add_action('wp_before_admin_bar_render', 'removeWpLogo');
 
 
 
 
-function get_current_template()
-{
-    if (!isset($GLOBALS['current_theme_template']))
-    {
-        return '';
-    }
 
-    return $GLOBALS['current_theme_template'];
-}
+

@@ -54,7 +54,7 @@ function enqueue_minified_scripts()
     wp_enqueue_script('frontend-scripts');
 
     //add some url-vars to end of <body> (loaded before frontend-scripts)
-    wp_localize_script('fontend-scripts', 'url', array(
+    wp_localize_script('frontend-scripts', 'url', array(
             'base' => get_home_url(),
             'ajax' => admin_url('admin-ajax.php'),
         )

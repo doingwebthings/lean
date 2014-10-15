@@ -191,6 +191,9 @@ module.exports = function(grunt){
                 files: ['assets/js/scripts.js'],
                 tasks: ['concat', 'uglify:dev', 'notify:js']
             },
+            php: {
+                files: ['**/*.php']
+            },
             options: {
                 livereload: true,
                 //spawn: false,

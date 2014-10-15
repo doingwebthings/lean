@@ -49,7 +49,8 @@ module.exports = function(grunt){
                     compress: false,
                     sourceMap: true,
                     cleancss: false,
-                    sourceMapFilename: 'assets/css/styles.css.map'
+                    sourceMapFilename: './assets/css/styles.css.map',
+                    sourceMapBasepath: './assets/css'
                 }
             },
             dist: {
@@ -99,12 +100,19 @@ module.exports = function(grunt){
 
         //uglify and concat js files
         uglify: {
+            dev: {
+                files: {
+                    'assets/js/scripts.min.js': ['assets/js/scripts.min.js']
+                },
+                options: {
+                    compress: false
+                }
+            },
             dist: {
                 files: {
                     'assets/js/scripts.min.js': ['assets/js/scripts.min.js']
                 },
                 options: {
-                    sourceMap: './scripts.min.js.map',
                     compress: true
                 }
             }
@@ -180,10 +188,13 @@ module.exports = function(grunt){
                 tasks: ['less:dev', 'notify:less']
             },
             js: {
-                files: [
-                    'assets/js/scripts.js'
-                ],
-                tasks: ['concat', 'notify:js']
+                files: ['assets/js/scripts.js'],
+                tasks: ['concat', 'uglify:dev', 'notify:js']
+            },
+            options: {
+                livereload: true,
+                //spawn: false,
+                port: 80
             }
         }
     });
@@ -195,7 +206,7 @@ module.exports = function(grunt){
         'less:dist',
         'autoprefixer',
         'cssmin',
-        'uglify',
+        'uglify:dist',
         'imagemin',
         'notify:default'
     ]);

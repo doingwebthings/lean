@@ -13,7 +13,7 @@ var scriptfiles = [
 //                        'bower_components/bootstrap/js/carousel.js',
     'bower_components/bootstrap/js/collapse.js',
 //                        'bower_components/bootstrap/js/dropdown.js',
-//                        'bower_components/bootstrap/js/modal.js',
+    'bower_components/bootstrap/js/modal.js',
 //                        'bower_components/bootstrap/js/tooltip.js',
 //                        'bower_components/bootstrap/js/popover.js',
 //                        'bower_components/bootstrap/js/scrollspy.js',
@@ -59,7 +59,7 @@ module.exports = function(grunt){
                     ]
                 },
                 options: {
-                    compress: false,
+                    compress: true,
                     cleancss: true
                 }
             }
@@ -68,7 +68,7 @@ module.exports = function(grunt){
         //autoprefix all css
         autoprefixer: {
             options: {
-                browsers: ['last 2 version', 'ie 8', 'ie 9']
+                browsers: ['last 3 versions', 'ie 8', 'ie 9']
             },
             dist: {
                 files: {
@@ -88,6 +88,15 @@ module.exports = function(grunt){
             }
         },
 
+        //minify css
+        cssmin: {
+            build: {
+                files: {
+                    'assets/css/styles.css': ['assets/css/styles.css']
+                }
+            }
+        },
+
         //uglify and concat js files
         uglify: {
             dist: {
@@ -96,12 +105,11 @@ module.exports = function(grunt){
                 },
                 options: {
                     sourceMap: './scripts.min.js.map',
-                    compress: {
-                        drop_console: true
-                    }
+                    compress: true
                 }
             }
         },
+
 
         //image optimization
         imagemin: {
@@ -186,6 +194,7 @@ module.exports = function(grunt){
         'sprite',
         'less:dist',
         'autoprefixer',
+        'cssmin',
         'uglify',
         'imagemin',
         'notify:default'

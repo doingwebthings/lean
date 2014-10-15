@@ -68,6 +68,12 @@ A file for helper functions used in template files. base_url(), asset_url(), tru
 - **remove some WordPress stuff** (feed-links, wp-generator, ...) not activated by default
 - **bootstrap navbar** with [https://github.com/twittem/wp-bootstrap-navwalker]()
 - **image resizing**: BFI_Thumbs available for usage in template files
+ 
+####-useful-files
+
+- **.htaccess** put it in webroot and modify as needed
+- **livereload.js** put it in webroot to use for development (get included in **theme-setup.php** when in local environment)
+
 
 ##To-Do
 

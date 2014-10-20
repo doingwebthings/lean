@@ -7,7 +7,7 @@ add_theme_support('menus');
 
 
 //on the fly image resizing
-include('libs/BFI_Thumb.php'); //https://github.com/bfintal/bfi_thumb
+include(get_template_directory() . '/includes/libs/BFI_Thumb.php'); //https://github.com/bfintal/bfi_thumb
 @define(BFITHUMB_UPLOAD_DIR, 'imagecache');
 
 
@@ -21,8 +21,7 @@ include('libs/wp_bootstrap_navwalker.php');
 
 
 add_action('after_setup_theme', 'my_theme_setup');
-function my_theme_setup()
-{
+function my_theme_setup() {
     load_theme_textdomain('lean', get_template_directory() . '/languages');
 }
 
@@ -45,10 +44,9 @@ register_nav_menus(array(
 /**
  * dequeue wp´s jquery and load minified scripts
  */
-function enqueue_minified_scripts()
-{
+function enqueue_minified_scripts() {
     //hello all minified scripts (jquery included)
-    wp_register_script('frontend-scripts', asset_url() . 'js/scripts.min.js', array(), null, true);
+    wp_register_script('frontend-scripts', asset_url() . 'js/scripts.min.js', array(), NULL, TRUE);
 
     //load at the end of <body>
     wp_enqueue_script('frontend-scripts');
@@ -61,14 +59,13 @@ function enqueue_minified_scripts()
     );
 
     //load modernizr in <head>
-    wp_register_script('modernizr', asset_url() . 'js/modernizr.js', array(), null, false);
+    wp_register_script('modernizr', asset_url() . 'js/modernizr.js', array(), NULL, FALSE);
     wp_enqueue_script('modernizr');
 }
 
 
 //only do this for frontend
-if (!is_admin())
-{
+if ( ! is_admin()) {
     add_action('wp_enqueue_scripts', 'enqueue_minified_scripts');
 }
 
@@ -79,15 +76,13 @@ if (!is_admin())
 /**
  * enqueue all styles into a single file
  */
-function enqueue_minified_styles()
-{
-    wp_register_style('styles', asset_url() . 'css/styles.css', array(), null, 'all');
+function enqueue_minified_styles() {
+    wp_register_style('styles', asset_url() . 'css/styles.css', array(), NULL, 'all');
     wp_enqueue_style('styles');
 }
 
 //only do this for frontend
-if (!is_admin())
-{
+if ( ! is_admin()) {
     add_action('wp_enqueue_scripts', 'enqueue_minified_styles');
 }
 
@@ -96,11 +91,12 @@ if (!is_admin())
 
 /**
  * removes media from style-tag
+ *
  * @param $src
+ *
  * @return mixed
  */
-function cleanUpStyleTag($src)
-{
+function cleanUpStyleTag($src) {
     return str_replace("media=''", '', $src);
 }
 
@@ -114,11 +110,14 @@ add_filter('style_loader_tag', 'cleanUpStyleTag');
  * remove hyperlink from images in THE CONTENT
  *
  * @param $content
+ *
  * @return string
  */
-function removeLinkFromAttachment($content)
-{
-    return $content = preg_replace(array('{<a(.*?)(wp-att|wp-content/uploads)[^>]*><img}', '{ wp-image-[0-9]*" /></a>}'), array('<img', '" />'), $content);
+function removeLinkFromAttachment($content) {
+    return $content = preg_replace(array(
+        '{<a(.*?)(wp-att|wp-content/uploads)[^>]*><img}',
+        '{ wp-image-[0-9]*" /></a>}'
+    ), array('<img', '" />'), $content);
 }
 
 add_filter('the_content', 'removeLinkFromAttachment');
@@ -136,19 +135,17 @@ add_filter('the_content', 'removeLinkFromAttachment');
  * @uses    is_home()
  * @uses    is_front_page()
  */
-function filterTitle($title)
-{
+function filterTitle($title) {
     global $page, $paged;
 
-    if (is_feed())
-    {
+    if (is_feed()) {
         return $title;
     }
 
     $site_description = get_bloginfo('description');
 
     $filtered_title = $title . get_bloginfo('name');
-    $filtered_title .= (!empty($site_description) && (is_home() || is_front_page())) ? ' – ' . $site_description : '';
+    $filtered_title .= ( ! empty($site_description) && (is_home() || is_front_page())) ? ' – ' . $site_description : '';
     $filtered_title .= (2 <= $paged || 2 <= $page) ? ' – ' . sprintf(__('Page %s'), max($paged, $page)) : '';
 
     return $filtered_title;
@@ -164,10 +161,10 @@ add_filter('wp_title', 'filterTitle');
  * change excerpt length to $length words
  *
  * @param $length
+ *
  * @return int
  */
-function customExcerptLength($length)
-{
+function customExcerptLength($length) {
     return 15;
 }
 
@@ -181,10 +178,10 @@ add_filter('excerpt_length', 'customExcerptLength', 999);
  * change excerpt "more" to whatever you like
  *
  * @param $more
+ *
  * @return string
  */
-function customExcerptMore($more)
-{
+function customExcerptMore($more) {
     return '…';
 }
 
@@ -198,13 +195,11 @@ add_filter('excerpt_more', 'customExcerptMore');
  *
  * @return string
  */
-function yoasttobottom()
-{
+function yoasttobottom() {
     return 'low';
 }
 
-if (is_admin())
-{
+if (is_admin()) {
     add_filter('wpseo_metabox_prio', 'yoasttobottom');
 }
 
@@ -216,17 +211,14 @@ if (is_admin())
  * remove all comments from html (yoast and some other plugins write to <head>)
  * not needed if w3c-caching is in use
  */
-function removeHTMLComments()
-{
-    ob_start(function ($buffer)
-    {
+function removeHTMLComments() {
+    ob_start(function ($buffer) {
         $buffer = preg_replace('/<!--(.|s)*?-->/', '', $buffer);
 
         return $buffer;
     });
 
-    add_action('wp_footer', function ()
-    {
+    add_action('wp_footer', function () {
         ob_end_flush();
     });
 }
@@ -241,8 +233,7 @@ add_action('get_header', 'removeHTMLComments');
  * add some default widget areas (sidebars)
  * remove as needed
  */
-function init_widgets()
-{
+function init_widgets() {
 
     register_sidebar(array(
         'name'          => 'Sidebar',
@@ -280,6 +271,30 @@ remove_action('wp_head', 'wlwmanifest_link'); // Display the link to the Windows
 //remove_action('wp_head', 'start_post_rel_link', 10, 0); // start link
 //remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0); // Display relational links for the posts adjacent to the current post.
 remove_action('wp_head', 'wp_generator'); // Display the XHTML generator that is generated on the wp_head hook, WP version
+
+
+
+
+/**
+ * get attribute srcset based on thumbnail-url
+ * <img src="big.jpg" srcset="small.jpg 1000w, large.jpg 2000w" alt="">
+ *
+ * @param string $imgUrl
+ * @param array $widths
+ *
+ * @return string
+ * @uses BFI_Thumb
+ */
+function getSrcset($imgUrl, $widths) {
+    $tmp = '';
+    foreach ($widths as $w) {
+        $tmp .= '' . bfi_thumb($imgUrl, array('width'=>$w)) . ' ' . $w . 'w,';
+    };
+
+    $srcset = rtrim('' . $tmp . '" ', ',');
+
+    return $srcset;
+}
 
 
 //PROJECT-SPECIFIC CODE//////////////////////////////////////////////////////////////////////////////////////////////////////

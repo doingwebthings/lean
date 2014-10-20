@@ -142,10 +142,15 @@ module.exports = function(grunt){
 
         //spritesmith: create spritemap from png-files and also sprites.less
         sprite: {
-            all: {
+            default: {
                 src: 'assets/img/sprites/*.png',
                 destImg: 'assets/img/spritesheet.png',
                 destCSS: 'assets/less/sprites.less'
+            },
+            retina: {
+                src: 'assets/img/sprites-2x/*.png',
+                destImg: 'assets/img/spritesheet-2x.png',
+                destCSS: 'assets/less/sprites-2x.less'
             }
         },
 

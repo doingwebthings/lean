@@ -286,12 +286,12 @@ remove_action('wp_head', 'wp_generator'); // Display the XHTML generator that is
  * @uses BFI_Thumb
  */
 function getSrcset($imgUrl, $widths) {
-    $tmp = '';
+    $sources = '';
     foreach ($widths as $w) {
-        $tmp .= '' . bfi_thumb($imgUrl, array('width'=>$w)) . ' ' . $w . 'w,';
+        $sources .= '' . bfi_thumb($imgUrl, array('width'=>$w)) . ' ' . $w . 'w,';
     };
 
-    $srcset = rtrim('' . $tmp . '" ', ',');
+    $srcset = rtrim('' . $sources . '" ', ',');
 
     return $srcset;
 }

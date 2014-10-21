@@ -1,6 +1,6 @@
 <?php get_template_part('partials/header'); ?>
 
-<?php get_template_part('partials/bootstrap-showcase'); ?>
+<?php #get_template_part('partials/bootstrap-showcase'); ?>
 
 
     <div class="container-fluid main">

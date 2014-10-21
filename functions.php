@@ -2,7 +2,7 @@
 /**
  * changes to the WordPress admin screen
  */
-include('includes/admin-setup.php');
+include(get_template_directory() . '/includes/admin-setup.php');
 
 
 /**

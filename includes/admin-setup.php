@@ -80,10 +80,10 @@ if (is_admin()) {
                 'new_item_name'     => 'Neue Kategorie',
                 'menu_name'         => 'Kategorien',
             ),
-            'hierarchical'      => true,
-            'query_var'         => true,
-            'rewrite'           => true,
-            'show_admin_column' => true,
+            'hierarchical'      => TRUE,
+            'query_var'         => TRUE,
+            'rewrite'           => TRUE,
+            'show_admin_column' => TRUE,
         ));
     }
 
@@ -99,7 +99,7 @@ if (is_admin()) {
         $showTaxonomies = 1;
         // Custom taxonomies counts
         if ($showTaxonomies) {
-            $taxonomies = get_taxonomies(array('_builtin' => false), 'objects');
+            $taxonomies = get_taxonomies(array('_builtin' => FALSE), 'objects');
             foreach ($taxonomies as $taxonomy) {
                 $num_terms            = wp_count_terms($taxonomy->name);
                 $num                  = number_format_i18n($num_terms);
@@ -112,9 +112,9 @@ if (is_admin()) {
             }
         }
         // Custom post types counts
-        $post_types = get_post_types(array('_builtin' => false), 'objects');
+        $post_types = get_post_types(array('_builtin' => FALSE), 'objects');
         foreach ($post_types as $post_type) {
-            if ($post_type->show_in_menu == false) {
+            if ($post_type->show_in_menu == FALSE) {
                 continue;
             }
             $num_posts = wp_count_posts($post_type->name);
@@ -172,6 +172,15 @@ add_action('wp_before_admin_bar_render', 'removeWpLogo');
 
 
 
+/**
+ * remove update info for all user but admins
+ */
+function hide_update_notice_to_all_but_admin_users() {
+    if ( ! current_user_can('update_core')) {
+        remove_action('admin_notices', 'update_nag', 3);
+    }
+}
 
+add_action('admin_head', 'hide_update_notice_to_all_but_admin_users', 1);
 
 

@@ -2,4 +2,4 @@
 node_modules/**
 bower_components/**
 assets/js/scripts.min.js.map
-assets/css/main.min.css.map
+assets/css/styles.css.map

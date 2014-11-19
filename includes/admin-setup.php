@@ -183,4 +183,42 @@ function hide_update_notice_to_all_but_admin_users() {
 
 add_action('admin_head', 'hide_update_notice_to_all_but_admin_users', 1);
 
+//
+//
+///**
+// * setup custom logo for login
+// */
+//function custom_login_logo() {
+//    echo '<style type="text/css">#login h1 a { background-image:url(' . get_template_directory() . '/assets/img/wp-login-logo.png) !important; }</style>';
+//}
+//
+//add_action('login_head', 'custom_login_logo');
+//
+//
+//
+//
+//
+///**
+// * change url of the login logo
+// * @return string|void
+// */
+//function my_login_logo_url() {
+//    return get_bloginfo('url');
+//}
+//
+//add_filter('login_headerurl', 'my_login_logo_url');
+//
+//
+//
+//
+//
+///**
+// * @return string
+// */
+//function my_login_logo_url_title() {
+//    return 'Your Site Name and Info';
+//}
+//
+//add_filter('login_headertitle', 'my_login_logo_url_title');
+
 

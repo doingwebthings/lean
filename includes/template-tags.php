@@ -8,22 +8,9 @@
 
 
 /**
- * template-tag: returns asset url
- */
-if (!function_exists('asset_url')) {
-    function asset_url() {
-        return get_template_directory_uri() . '/assets/';
-    }
-}
-
-
-
-
-
-/**
  * base_url
  */
-if (!function_exists('base_url')) {
+if ( ! function_exists('base_url')) {
     function base_url() {
         return get_bloginfo('wpurl') . '/';
     }
@@ -35,11 +22,13 @@ if (!function_exists('base_url')) {
 
 /**
  * truncate phrase by words and add … if cut off
+ *
  * @param $phrase
  * @param $max_words
+ *
  * @return string
  */
-if (!function_exists('trunc')) {
+if ( ! function_exists('trunc')) {
     function trunc($phrase, $max_words) {
         $phrase_array = explode(' ', $phrase);
         if (count($phrase_array) > $max_words && $max_words > 0) {
@@ -56,17 +45,19 @@ if (!function_exists('trunc')) {
 
 /**
  * Check if page is direct child of another page
+ *
  * @param $page_id
+ *
  * @return bool
  */
-if (!function_exists('is_child')) {
+if ( ! function_exists('is_child')) {
     function is_child($page_id) {
         global $post;
         if (is_page() && ($post->post_parent == $page_id)) {
-            return true;
+            return TRUE;
         }
         else {
-            return false;
+            return FALSE;
         }
     }
 }
@@ -77,18 +68,20 @@ if (!function_exists('is_child')) {
 
 /**
  * Check if page is an ancestor
+ *
  * @param $post_id
+ *
  * @return bool
  */
-if (!function_exists('is_ancestor')) {
+if ( ! function_exists('is_ancestor')) {
     function is_ancestor($post_id) {
         global $wp_query;
         $ancestors = $wp_query->post->ancestors;
         if (in_array($post_id, $ancestors)) {
-            return true;
+            return TRUE;
         }
         else {
-            return false;
+            return FALSE;
         }
     }
 }
@@ -99,10 +92,12 @@ if (!function_exists('is_ancestor')) {
 
 /**
  * sort array by value
+ *
  * @param $key
+ *
  * @return callable
  */
-if (!function_exists('sort_by_value')) {
+if ( ! function_exists('sort_by_value')) {
     function sort_by_value($key) {
         return function ($a, $b) use ($key) {
             return strnatcmp($a[$key], $b[$key]);

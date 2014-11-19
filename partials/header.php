@@ -7,7 +7,7 @@
 
     <title><?php wp_title('|', true, 'right'); ?></title>
 
-    <link rel="shortcut icon" type="image/x-icon" href="<?php echo asset_url(); ?>img/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url(); ?>img/favicon.ico">
 
     <?php wp_head(); ?>
 

@@ -14,7 +14,7 @@ include(get_template_directory() . '/includes/libs/BFI_Thumb.php'); //https://gi
 
 
 
-include('libs/wp_bootstrap_navwalker.php');
+include(get_template_directory() . '/includes/libs/wp_bootstrap_navwalker.php');
 
 
 
@@ -46,7 +46,7 @@ register_nav_menus(array(
  */
 function enqueue_minified_scripts() {
     //hello all minified scripts (jquery included)
-    wp_register_script('frontend-scripts', asset_url() . 'js/scripts.min.js', array(), NULL, TRUE);
+    wp_register_script('frontend-scripts', base_url() . 'js/scripts.min.js', array(), NULL, TRUE);
 
     //load at the end of <body>
     wp_enqueue_script('frontend-scripts');
@@ -59,7 +59,7 @@ function enqueue_minified_scripts() {
     );
 
     //load modernizr in <head>
-    wp_register_script('modernizr', asset_url() . 'js/modernizr.js', array(), NULL, FALSE);
+    wp_register_script('modernizr', base_url() . 'js/modernizr.js', array(), NULL, FALSE);
     wp_enqueue_script('modernizr');
 }
 
@@ -77,7 +77,7 @@ if ( ! is_admin()) {
  * enqueue all styles into a single file
  */
 function enqueue_minified_styles() {
-    wp_register_style('styles', asset_url() . 'css/styles.css', array(), NULL, 'all');
+    wp_register_style('styles', base_url() . 'css/styles.css', array(), NULL, 'all');
     wp_enqueue_style('styles');
 }
 
@@ -288,13 +288,33 @@ remove_action('wp_head', 'wp_generator'); // Display the XHTML generator that is
 function getSrcset($imgUrl, $widths) {
     $sources = '';
     foreach ($widths as $w) {
-        $sources .= '' . bfi_thumb($imgUrl, array('width'=>$w)) . ' ' . $w . 'w,';
+        $sources .= '' . bfi_thumb($imgUrl, array('width' => $w)) . ' ' . $w . 'w,';
     };
 
     $srcset = rtrim('' . $sources . '" ', ',');
 
     return $srcset;
 }
+
+
+
+/**
+ * adding rewrite rules for css/js/img
+ *
+ * @param $content
+ */
+function change_wpcontent_rewrites($content) {
+    $theme_name = next(explode('/themes/', get_stylesheet_directory()));
+    global $wp_rewrite;
+    $roots_new_non_wp_rules = array(
+        'css/(.*)' => 'wp-content/themes/' . $theme_name . '/assets/css/$1',
+        'js/(.*)'  => 'wp-content/themes/' . $theme_name . '/assets/js/$1',
+        'img/(.*)' => 'wp-content/themes/' . $theme_name . '/assets/img/$1',
+    );
+    $wp_rewrite->non_wp_rules += $roots_new_non_wp_rules;
+}
+
+add_action('generate_rewrite_rules', 'change_wpcontent_rewrites');
 
 
 //PROJECT-SPECIFIC CODE//////////////////////////////////////////////////////////////////////////////////////////////////////

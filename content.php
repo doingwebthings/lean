@@ -13,6 +13,7 @@
     </header>
 
     <div class="testimage">
+        <?php echo get_field('testimage'); ?>
         <img src="<?php echo get_field('testimage'); ?>" srcset="<?php echo getSrcset(get_field('testimage'), array(
                 200,
                 800,

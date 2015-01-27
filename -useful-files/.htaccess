@@ -6,6 +6,7 @@
   RewriteRule ^css/(.*) /wp-content/themes/{{lean}}/assets/css/$1 [QSA,L]
   RewriteRule ^js/(.*) /wp-content/themes/{{lean}}/assets/js/$1 [QSA,L]
   RewriteRule ^img/(.*) /wp-content/themes/{{lean}}/assets/img/$1 [QSA,L]
+  RewriteRule ^fonts/(.*) /wp-content/themes/{{lean}}/assets/fonts/$1 [QSA,L]
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteRule . /index.php [L]

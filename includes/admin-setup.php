@@ -106,7 +106,7 @@ if (is_admin()) {
                 $text                 = _n($taxonomy->labels->singular_name, $taxonomy->labels->name, $num_terms);
                 $associated_post_type = $taxonomy->object_type;
                 if (current_user_can('manage_categories')) {
-                    $output = '<a href="edit-tags.php?taxonomy=' . $taxonomy->name . '&post_type=' . $associated_post_type[0] . '">' . $num . ' ' . $text . '</a>';
+                    $output = '<a href="edit-tags.php?taxonomy=' . $taxonomy->name . '&post_type=' . @$associated_post_type[0] . '">' . $num . ' ' . $text . '</a>';
                 }
                 echo '<li class="taxonomy-count">' . $output . ' </li>';
             }

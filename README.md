@@ -43,7 +43,7 @@ All these files are loaded by functions.php.
 - simply includes files from includes/custom-post-types/
 - all definition for CPTs goes into separate files (products.php, jobs.php)
 
-####admin-cron.php
+####cron.php
 
 - if you use wp-cron, do it in this file
 

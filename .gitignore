@@ -1,5 +1,8 @@
-.idea/**
-node_modules/**
+.idea
 bower_components/**
+node_modules/**
+vendor
 assets/js/scripts.min.js.map
 assets/css/styles.css.map
+composer.lock
+npm-debug.log

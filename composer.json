@@ -1,0 +1,15 @@
+{
+  "name": "raum3/lean-theme",
+  "description": "",
+  "minimum-stability": "beta",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Rolf Meyer",
+      "email": "meyer@raum3.de"
+    }
+  ],
+  "require": {
+    "nesbot/carbon": "1.18.0"
+  }
+}

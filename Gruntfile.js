@@ -5,6 +5,7 @@
  * use only what you need to keep the filesize low
  **/
 var scriptfiles = [
+    'bower_components/modernizr/modernizr.js', //modernizr
     'bower_components/jquery/dist/jquery.js', //jquery
     //'bower_components/underscore/underscore.js', //underscore
     'bower_components/bootstrap/js/transition.js',

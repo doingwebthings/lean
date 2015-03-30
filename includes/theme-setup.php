@@ -45,11 +45,9 @@ register_nav_menus(array(
  * dequeue wp´s jquery and load minified scripts
  */
 function enqueue_minified_scripts() {
+
     //hello all minified scripts (jquery included)
     wp_register_script('frontend-scripts', base_url() . 'js/scripts.min.js', array(), NULL, TRUE);
-
-    //load at the end of <body>
-    wp_enqueue_script('frontend-scripts');
 
     //add some url-vars to end of <body> (loaded before frontend-scripts)
     wp_localize_script('frontend-scripts', 'url', array(
@@ -58,9 +56,8 @@ function enqueue_minified_scripts() {
         )
     );
 
-    //load modernizr in <head>
-    wp_register_script('modernizr', base_url() . 'js/modernizr.js', array(), NULL, FALSE);
-    wp_enqueue_script('modernizr');
+    //load at the end of <body>
+    wp_enqueue_script('frontend-scripts');
 }
 
 

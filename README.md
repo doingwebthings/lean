@@ -1,6 +1,6 @@
 #Lean
 
-Lean is a simple and small WordPress starter theme.
+Lean is a simple and small WordPress starter theme for "non-blog"-websites.
 
 What it does:
 
@@ -11,18 +11,17 @@ What it does:
 - markup is build with **bootstrap** in mind, menus are built using  [https://github.com/twittem/wp-bootstrap-navwalker]().
 - **favicon** included yay
 - take all theme-related features from "functionality plugin" and put it into the according include-files loaded by functions.php. This might be considered a bad practice but it does a good job for me.
+- get more php-tools with composer. again, it´s in the theme, guys.
 - load **minified assets** (both js and css)
 
 **Frontend**
 
 - use best practices from **h5bp**, **bootstrap** and friends
-- It´s mobile first, yay. All screen-sizes are in seperate files.
-- **Bootstrap 3** shims for IE8 already included
+- **Bootstrap 3**  (shims for IE8 NO LONGER included)
 - Grunt-workflow for image-optimization (imagemin), javascript (uglify) and less (less, autoprefixer, cssmin)
 - which **Javascript-libraries** are included?
-    - **jQuery 1.11** (still supporting oldies)
+    - **jQuery 2+**
     - **Modernizr**
-    - **underscore**
 - simplified **BEM/OOCSS** for css (see header info in [screen.less](https://github.com/doingwebthings/lean/blob/master/assets/less/screen.less) for example)
 
 
@@ -43,6 +42,10 @@ All these files are loaded by functions.php.
 
 - simply includes files from includes/custom-post-types/
 - all definition for CPTs goes into separate files (products.php, jobs.php)
+
+####admin-cron.php
+
+- if you use wp-cron, do it in this file
 
 ####mail-setup.php
 
@@ -77,6 +80,6 @@ A file for helper functions used in template files. base_url(), asset_url(), tru
 
 ##To-Do
 
-- use more semantic markup (and CSS-classes) suitable for blogs AND portfolio-sites
+- add more useful files (wp-environment)
 - Grunt: create image-sprites (and svg-sprites)
-- move to jQuery 2 sometime?
+

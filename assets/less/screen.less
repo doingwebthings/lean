@@ -1,114 +1,127 @@
-/*
-simplified BEM
-• block (.box): no dashes in class-name: wrong: class-name, right: classname
-• element (.box-headline): element in block. decoupled naming, wrong: .box-h1, right: .box-headline
-• modifier (.box-headline--funky): adding alternatives to defaults... don´t use numbers (.box-headline--2)
+/*************************************************************
+SPRITES
+to include the file "the-man.png": .sprite(@the-man);
 */
-//module box
-//.box {
-//  display: block;
-//  background-color: #ddd;
-//  .make-xs-column(12);
-//
-//  &-headline {
-//    color: orangered;
-//  }
-//
-//  &-headline--funky {
-//    color: orange;
-//  }
-//
-//  &-copy {
-//    color: green;
-//  }
-//
-//  &-link {
-//    color: blue;
-//
-//    &:hover {
-//      background-color: red;
-//    }
-//  }
-//}
 
-//change bootstrap classes bootstrap because i wanna
-.alert {
-  border: none;
-}
+/*************************************************************
+MEDIA-QUERIES
 
+SIZE XS AND UP
+@media all and (min-width: @screen-xs) {}
 
+SIZE SM AND UP
+@media all and (min-width: @screen-sm) {}
 
+SIZE MD AND UP
+@media all and (min-width: @screen-md) {}
 
+SIZE LG AND UP
+@media all and (min-width: @screen-lg) {}
 
-.label {
-  border-radius: 0px !important;
-}
+-----
 
+SIZE LG AND DOWN
+@media all and (max-width: @screen-lg) {}
 
+SIZE MD AND DOWN
+@media all and (max-width: @screen-md) {}
 
+SIZE SM AND DOWN
+@media all and (max-width: @screen-sm) {}
 
+SIZE XS AND DOWN
+@media all and (max-width: @screen-xs) {}
 
-//bootstrap remove headline margins
-h1, h2, h3, h4, h5, h6 {
-  //  margin: 0;
-}
+-----
+
+SIZE XS ONLY
+@media all and (max-width: @screen-xs-max) {}
+
+SIZE SM ONLY
+@media all and (min-width: @screen-sm and (max-device-width: @screen-sm-max) ) {}
+
+SIZE MD ONLY
+@media all and (min-width: @screen-md and (max-device-width: @screen-md-max) ) {}
+
+SIZE LG ONLY
+@media all and (min-width: @screen-lg) ) {}
 
 
-
-
-
-.navbar-header {
-  .make-xs-column(12);
-}
-
-
-
-
-
-//padding is needed in bigger screens
-//.navbar-brand {
-//  padding-left: 0;
-//}
-//
-.navbar {
-  margin-bottom: 0;
-}
-
-
-
-
-
-//
-//.navbar-default {
-//  background-color: transparent;
-//}
-//
-//.row-top {
-//  background-color: #fff;
-//}
-
-/*
-module article: used by content.php to display articles
 */
-.article {
-  .make-xs-column(12);
 
-  background-color: #fff;
-  margin: 0 0 1em 0;
-  padding-bottom: 1em;
+/* CUSTOM COLORS */
+@color-blue: blue;
+@color-green: green;
+@color-lightgray: lightgray;
+@color-darkgray: darkgray;
 
+/* CUSTOM FONTS */
+@font-light: 'FrutigerLTW01-45Light', sans-serif;
+@font-medium: 'FrutigerLTW02-55Roman', sans-serif;
+@font-bold: 'Frutiger LT W01_65 Bold', sans-serif;
+
+/* HTML TAGS */
+body {
+  color: @color-darkgray;
+  font-family: @font-light;
+}
+
+
+
+
+
+/*************************************************************
+HELPER CLASSES (potential mixins)
+*/
+
+// set "centered" background-image in element
+.img-centered {
+  background-size: cover;
+  background-position: center center;
+}
+
+
+
+
+
+/*************************************************************
+MODULES
+*/
+//modul site: default layout elements like header, footer
+.site {
+
+  //.site-header
   &-header {
-    padding-top: 1em;
-    padding-bottom: 1em;
-    color: @alert-info-text;
+
+    //bootstrap navbar
+    .navbar {
+      @media all and (min-width: @screen-sm) {
+        bottom: 15px;
+        left: 200px;
+        margin: 0;
+        height: 0;
+        position: relative;
+      }
+      background-color: transparent;
+      border: none;
+    }
+
+    //id-"shortcut" with higher specificity to outsmart bootstrap inheritance
+    #menu-primary-menu {
+      a {
+        font-family: @font-bold;
+        font-size: 14px;
+        text-transform: uppercase;
+        padding: 1em;
+      }
+    }
   }
-  &-title {
-    font-size: 24px;
-  }
-  &-meta {
-  }
+
+  //.site-content
   &-content {
   }
+
+  //.site-footer
   &-footer {
   }
 }
@@ -117,125 +130,8 @@ module article: used by content.php to display articles
 
 
 
-/*
-module comments = the container for comments
+/*************************************************************
+OTHER STYLES
 */
-.comments {
-  .make-xs-column(12);
-
-  background-color: #fff;
-  margin: 0 0 1em 0;
-  padding-bottom: 1em;
-
-  &-title {
-    font-size: 21px;
-    margin-top: 1em;
-    margin-bottom: 1em;
-  }
-
-  li {
-    list-style-type: none;
-  }
-
-  &-list, ul.comment {
-    padding-left: 0;
-  }
-}
-
-
-
-
-
-/*
-module comment: single comments
-*/
-.comment {
-  padding: 1em;
-  padding-left: 2em;
-  margin: 0.5em 0 1em 0;
-  width: 100%;
-
-  &-heading {
-    padding-right: 15px;
-    font-size: 14px;
-  }
-
-  &-datetime {
-    font-size: 12px;
-  }
-
-  &-text {
-    font-size: 14px;
-    padding: 0.5em;
-    background-color: #f5f5f5;
-  }
-}
-
-
-
-
-
-.widgets {
-  .hidden-xs;
-}
-
-
-
-
-
-//remove custom comment submit button... wp u rock!
-.form-submit {
-  display: none;
-}
-
-
-
-
-
-//main area for content, usually the place for page-content, articles, ...
-.maincontent {
-  .make-md-column(12);
-}
-
-
-
-
-
-
-//"default-container" for wordpress widgets
-.widgets {
-  .make-md-column(2);
-}
-
-
-
-
-
-.top-header {
-  margin-bottom: 2em;
-}
-
-
-
-
-
-.footer-section {
-  border-top: 1px solid #eee;
-  margin-top: 2em;
-  padding: 1em;
-}
-
-
-
-
-
-//ICON TEST
-.yeoman{
-  height: 400px;
-  width: 500px;
-  background-color: #ddd;
-  .sprite(@the-man);
-}
-
 
 

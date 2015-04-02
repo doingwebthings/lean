@@ -2,8 +2,8 @@
 <?php the_post(); ?>
 
 	<div class="container">
-		<h1>Hey Girls</h1>
 		<div class="row">
+			<h1>Pattern-Library goes here:</h1>
 		</div>
 	</div>
 

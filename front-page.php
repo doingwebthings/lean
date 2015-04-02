@@ -1,10 +1,21 @@
-<?php get_template_part( 'partials/header' ); ?>
+<?php get_template_part('partials/header'); ?>
 <?php the_post(); ?>
+<?php get_template_part('partials/menu-primary'); ?>
 
-	<div class="container">
+	<div class="site-content container">
 		<div class="row">
-			<h1>Pattern-Library goes here:</h1>
+			<div class="col-sm-12">
+				CONTENT
+			</div>
 		</div>
 	</div>
 
-<?php get_template_part( 'partials/footer' ); ?>
+	<div class="site-footer container">
+		<div class="row">
+			<div class="col-sm-12">
+				FOOTER
+			</div>
+		</div>
+	</div>
+
+<?php get_template_part('partials/footer'); ?>

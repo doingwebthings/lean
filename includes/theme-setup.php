@@ -208,19 +208,20 @@ if (is_admin()) {
  * remove all comments from html (yoast and some other plugins write to <head>)
  * not needed if w3c-caching is in use
  */
-function removeHTMLComments() {
-    ob_start(function ($buffer) {
-        $buffer = preg_replace('/<!--(.|s)*?-->/', '', $buffer);
-
-        return $buffer;
-    });
-
-    add_action('wp_footer', function () {
-        ob_end_flush();
-    });
-}
-
-add_action('get_header', 'removeHTMLComments');
+//function removeHTMLComments() {
+//    ob_start(function ($buffer) {
+//        $buffer = preg_replace('/<!--(.|s)*?-->/', '', $buffer);
+//
+//        return $buffer;
+//    });
+//
+//}
+//
+//add_action('get_header', 'removeHTMLComments');
+//
+//add_action('wp_footer', function () {
+//	ob_end_flush();
+//});
 
 
 

@@ -2,7 +2,9 @@
 bower_components/**
 node_modules/**
 vendor
-assets/js/scripts.min.js.map
+assets/css/styles.css
 assets/css/styles.css.map
+assets/js/scripts.min.js
+assets/js/scripts.min.js.map
 composer.lock
 npm-debug.log

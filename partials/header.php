@@ -7,19 +7,40 @@
 
 		<title><?php wp_title('|', true, 'right'); ?></title>
 
-		<link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url(); ?>img/favicon.ico">
+		<?php get_template_part('partials/favicons'); ?>
 
+		<link type="text/css" rel="stylesheet" href="http://fast.fonts.net/cssapi/dc663f5b-95e5-4420-8b5e-cb6ce1e6a24f.css">
 		<?php wp_head(); ?>
 
 		<?php if(is_development() === true): ?>
 			<script type="text/javascript" src="<?php echo base_url(); ?>livereload.js"></script>
 		<?php endif; ?>
 
-		<link type="text/css" rel="stylesheet" href="http://fast.fonts.net/cssapi/dc663f5b-95e5-4420-8b5e-cb6ce1e6a24f.css">
-
 	</head>
 
 	<body <?php body_class() ?>>
 
+		<header class="site-header">
 
-
+			<nav class="navbar navbar-default" role="navigation">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-primary-collapse">
+						<span class="pull-left">Menu</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				</div>
+				<?php wp_nav_menu(array(
+					'menu'            => 'primary',
+					'theme_location'  => 'primary',
+					'depth'           => 2,
+					'container'       => 'div',
+					'container_id'    => 'navbar-primary-collapse',
+					'container_class' => 'collapse navbar-collapse',
+					'menu_class'      => 'nav navbar-nav',
+					'fallback_cb'     => 'wp_bootstrap_navwalker::fallback',
+					'walker'          => new wp_bootstrap_navwalker(),
+				)); ?>
+			</nav>
+		</header>

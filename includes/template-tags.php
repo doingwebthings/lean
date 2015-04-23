@@ -10,10 +10,10 @@
 /**
  * base_url
  */
-if ( ! function_exists('base_url')) {
-    function base_url() {
-        return get_bloginfo('wpurl') . '/';
-    }
+if( ! function_exists('base_url')) {
+	function base_url() {
+		return get_bloginfo('wpurl') . '/';
+	}
 }
 
 
@@ -28,15 +28,15 @@ if ( ! function_exists('base_url')) {
  *
  * @return string
  */
-if ( ! function_exists('trunc')) {
-    function trunc($phrase, $max_words) {
-        $phrase_array = explode(' ', $phrase);
-        if (count($phrase_array) > $max_words && $max_words > 0) {
-            $phrase = implode(' ', array_slice($phrase_array, 0, $max_words)) . '…';
-        }
+if( ! function_exists('trunc')) {
+	function trunc($phrase, $max_words) {
+		$phrase_array = explode(' ', $phrase);
+		if(count($phrase_array) > $max_words && $max_words > 0) {
+			$phrase = implode(' ', array_slice($phrase_array, 0, $max_words)) . '…';
+		}
 
-        return $phrase;
-    }
+		return $phrase;
+	}
 }
 
 
@@ -50,16 +50,15 @@ if ( ! function_exists('trunc')) {
  *
  * @return bool
  */
-if ( ! function_exists('is_child')) {
-    function is_child($page_id) {
-        global $post;
-        if (is_page() && ($post->post_parent == $page_id)) {
-            return TRUE;
-        }
-        else {
-            return FALSE;
-        }
-    }
+if( ! function_exists('is_child')) {
+	function is_child($page_id) {
+		global $post;
+		if(is_page() && ($post->post_parent == $page_id)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }
 
 
@@ -73,36 +72,58 @@ if ( ! function_exists('is_child')) {
  *
  * @return bool
  */
-if ( ! function_exists('is_ancestor')) {
-    function is_ancestor($post_id) {
-        global $wp_query;
-        $ancestors = $wp_query->post->ancestors;
-        if (in_array($post_id, $ancestors)) {
-            return TRUE;
-        }
-        else {
-            return FALSE;
-        }
-    }
+if( ! function_exists('is_ancestor')) {
+	function is_ancestor($post_id) {
+		global $wp_query;
+		$ancestors = $wp_query->post->ancestors;
+		if(in_array($post_id, $ancestors)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }
 
 
 
 
 
-/**
- * sort array by value
- *
- * @param $key
- *
- * @return callable
- */
-if ( ! function_exists('sort_by_value')) {
-    function sort_by_value($key) {
-        return function ($a, $b) use ($key) {
-            return strnatcmp($a[$key], $b[$key]);
-        };
-    }
+if( ! function_exists('is_development')) {
+	/**
+	 * @return bool
+	 */
+	function is_development() {
+		if(WP_ENV === 'development') {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }
+if( ! function_exists('is_production')) {
+	/**
+	 * @return bool
+	 */
+	function is_production() {
+		if(WP_ENV === 'production') {
+			return true;
+		} else {
+			return false;
+		}
+	}
+}
+if( ! function_exists('is_staging')) {
+	/**
+	 * @return bool
+	 */
+	function is_staging() {
+		if(WP_ENV === 'staging') {
+			return true;
+		} else {
+			return false;
+		}
+	}
+}
+
 
 

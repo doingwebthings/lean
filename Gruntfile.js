@@ -7,25 +7,25 @@
 var scriptfiles = [
     'bower_components/modernizr/modernizr.js', //modernizr
     'bower_components/jquery/dist/jquery.js', //jquery
-    //'bower_components/underscore/underscore.js', //underscore
     'bower_components/bootstrap/js/transition.js',
-//                        'bower_components/bootstrap/js/alert.js',
-//                        'bower_components/bootstrap/js/button.js',
-//                        'bower_components/bootstrap/js/carousel.js',
+    //                        'bower_components/bootstrap/js/alert.js',
+    //                        'bower_components/bootstrap/js/button.js',
+    'bower_components/bootstrap/js/carousel.js',
     'bower_components/bootstrap/js/collapse.js',
-//                        'bower_components/bootstrap/js/dropdown.js',
+    'bower_components/bootstrap/js/dropdown.js',
     'bower_components/bootstrap/js/modal.js',
-//                        'bower_components/bootstrap/js/tooltip.js',
-//                        'bower_components/bootstrap/js/popover.js',
-//                        'bower_components/bootstrap/js/scrollspy.js',
-//                        'bower_components/bootstrap/js/tab.js',
-//                        'bower_components/bootstrap/js/affix.js',
+    //                        'bower_components/bootstrap/js/tooltip.js',
+    //                        'bower_components/bootstrap/js/popover.js',
+    //                        'bower_components/bootstrap/js/scrollspy.js',
+    //                        'bower_components/bootstrap/js/tab.js',
+    //                        'bower_components/bootstrap/js/affix.js',
+    'bower_components/bootstrap-carousel-swipe/carousel-swipe.js',
     'assets/js/scripts.js' //
 ];
 
 
 //grunt
-module.exports = function(grunt){
+module.exports = function (grunt) {
 
     //jit-grunt
     require('jit-grunt')(grunt, {
@@ -190,7 +190,7 @@ module.exports = function(grunt){
                 tasks: ['sprite', 'notify:sprites']
             },
             less: {
-                files: ['assets/less/*.less'],
+                files: ['assets/less/**/*.less'],
                 tasks: ['less:dev', 'notify:less']
             },
             js: {
@@ -205,22 +205,102 @@ module.exports = function(grunt){
                 //spawn: false,
                 port: 80
             }
+        },
+
+
+        //remove unneeded selectors from css
+        uncss: {
+
+            dist: {
+                options: {
+                    ignore: [
+                        '.modal-open',
+                        '.modal-open .modal',
+                        '.modal',
+                        '.fade',
+                        '.modal-dialog',
+                        '.in',
+                        '.modal-content',
+                        '.modal-backdrop',
+                        '.modal-backdrop.in',
+                        '.modal.fade .modal-dialog',
+                        '.modal.in .modal-dialog',
+                        '.modal-scrollbar-measure',
+                        // needed for Bootstrap's transitions
+                        ".modal",
+                        ".in",
+                        ".fade",
+                        ".modal-open",
+                        ".modal-backdrop",
+                        ".fade.in",
+                        ".collapse",
+                        ".collapse.in",
+                        ".navbar-collapse",
+                        ".navbar-collapse.in",
+                        ".collapsing",
+                        // needed for the `<noscript>` warning; remove them when fixed in uncss
+                        ".alert-danger",
+                        ".visible-xs",
+                        ".noscript-warning",
+                        // currently only in a IE conditional so uncss doesn't see it
+                        ".close",
+                        ".alert-dismissible"
+                    ],
+                    report: 'gzip'
+                },
+                files: {
+                    'assets/css/styles.css': [
+                        'front-page.php'
+                    ]
+                }
+            }
+        },
+
+        //save all svg as png
+        svg2png: {
+            all: {
+                files: [
+                    {
+                        cwd: 'assets/img/svg/',
+                        src: ['**/*.svg'],
+                        dest: 'assets/img/svg',
+                        expand: false
+                    }
+                ]
+            }
+        },
+
+
+        //create svg-spritemap
+        svgstore: {
+            options: {
+                prefix: 'svg-shape-',
+                svg: {
+                    xmlns: 'http://www.w3.org/2000/svg'
+                }
+            },
+            default: {
+                files: {
+                    'assets/img/svg/sprites.svg': ['assets/img/svg/*.svg']
+                }
+            }
         }
+
+
     });
 
 
     //default for production: files are concatenated and uglified
     grunt.registerTask('default', [
-        'sprite',
+        //'sprite',
         'less:dist',
         'autoprefixer',
         'cssmin',
         'uglify:dist',
         'imagemin',
         'notify:default'
+        //'uncss:dist' //not working right now
     ]);
-
-
 
 
 };
